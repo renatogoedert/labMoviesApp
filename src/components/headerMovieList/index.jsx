@@ -4,6 +4,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
 
 const styles = {
   root: {
@@ -25,10 +26,8 @@ const Header = (props ) => {
       >
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
+      
 
-      <Typography variant="h4" component="h3">
-        {title}
-      </Typography>
       <IconButton
         aria-label="go forward"
       >
