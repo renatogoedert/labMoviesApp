@@ -15,12 +15,12 @@ const UpcomingMoviesPage = (props) => {
     return <h1>{error.message}</h1>;
   }
 
-  const movies = data ? data.results : [];
+  const upcomingMovies = data ? data.results : [];
 
   return (
     <PageTemplate
       title="New Upcoming Movies"
-      movies={movies}
+      movies={upcomingMovies}
       action={(movie) => {
         return <AddToPlaylistIcon movie={movie} />
       }}
