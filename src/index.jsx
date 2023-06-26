@@ -23,6 +23,8 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+  const refresh = () => window.location.reload(true)
+  
   return (
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>

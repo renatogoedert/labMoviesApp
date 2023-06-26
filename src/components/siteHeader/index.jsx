@@ -36,6 +36,7 @@ const SiteHeader = () => {
 
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL);
+    window.location.reload();
   };
 
   const handleMenu = (event) => {
