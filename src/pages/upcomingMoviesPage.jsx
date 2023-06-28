@@ -6,7 +6,7 @@ import Spinner from "../components/spinner";
 import AddToPlaylistIcon from '../components/cardIcons/addToPlaylist';
 
 const UpcomingMoviesPage = (props) => {
-  const { data, error, isLoading, isError } = useQuery("discover", getUpcomingMovies);
+  const { data, error, isLoading, isError } = useQuery("upcoming", getUpcomingMovies);
 
   if (isLoading) {
     return <Spinner />;
