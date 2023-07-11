@@ -62,14 +62,14 @@ export default function ActorCard({ actor, action }) {
           </Typography>
         }
       />
-      <CardMedia
+      {/* <CardMedia
         sx={styles.media}
         image={
           actor.profile_path
             ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
             : img
         }
-      />
+      /> */}
       <CardContent>
         <Grid container>
           <Grid item xs={6}>

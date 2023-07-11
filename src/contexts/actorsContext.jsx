@@ -38,4 +38,4 @@ const ActorsContextProvider = (props) => {
   );
 };
 
-export default MoviesContextProvider;
+export default ActorsContextProvider;
