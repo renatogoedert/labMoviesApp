@@ -8,7 +8,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
+import FemaleIcon from '@mui/icons-material/Female';
+import MaleIcon from '@mui/icons-material/Male';
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png';
@@ -62,20 +63,19 @@ export default function ActorCard({ actor, action }) {
           </Typography>
         }
       />
-      {/* <CardMedia
+      <CardMedia
         sx={styles.media}
         image={
           actor.profile_path
             ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
             : img
         }
-      /> */}
+      />
       <CardContent>
         <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {actor.gender}
+              {actor.gender === 1 ? <FemaleIcon fontSize="large" /> : <MaleIcon fontSize="large" />}
             </Typography>
           </Grid>
           <Grid item xs={6}>
