@@ -6,16 +6,16 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+// import FavoriteIcon from "@mui/icons-material/Favorite";
+// import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
-import { ActorsContext } from "../../contexts/actorsContext";
+// import Avatar from "@mui/material/Avatar";
+// import { ActorsContext } from "../../contexts/actorsContext";
 
 
 const styles = {
@@ -86,14 +86,14 @@ export default function ActorCard({ actor, action }) {
           </Grid>
         </Grid>
       </CardContent>
-      {/* <CardActions disableSpacing>
-        {action(movie)}
-        <Link to={`/movies/${movie.id}`}>
+      <CardActions disableSpacing>
+        {/* {action(actor)} */}
+        <Link to={`${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
         </Link>
-      </CardActions> */}
+      </CardActions>
     </Card>
   );
 }

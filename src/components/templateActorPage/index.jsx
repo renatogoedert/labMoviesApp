@@ -36,7 +36,7 @@ const TemplateActorPage = ({ actor, children }) => {
 
   return (
     <>
-      <MovieHeader actor={actor} />
+      <ActorHeader actor={actor} />
 
       <Grid container spacing={5} style={{ padding: "15px" }}>
         <Grid item xs={3}>
