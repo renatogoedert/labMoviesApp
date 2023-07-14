@@ -43,7 +43,7 @@ export default function FilterMoviesCard(props) {
 
   const handleUserImput = (e, type, value) => {
     e.preventDefault();
-    props.onUserInput(type, value); // NEW
+    props.onUserInput(type, value); 
   };
 
   const handleTextChange = (e, props) => {
@@ -52,6 +52,10 @@ export default function FilterMoviesCard(props) {
 
   const handleGenreChange = (e) => {
     handleUserImput(e, "genre", e.target.value);
+  };
+
+  const handleRatingChange = (e, props) => {
+    handleUserImput(e, "rating", e.target.value);
   };
 
   return (
@@ -70,6 +74,15 @@ export default function FilterMoviesCard(props) {
           value={props.titleFilter}
           variant="filled"
           onChange={handleTextChange}
+        />
+        <TextField
+          sx={styles.formControl}
+          id="filled-search"
+          label="Rating "
+          type="search"
+          value={props.ratingFilter}
+          variant="filled"
+          onChange={handleRatingChange}
         />
         <FormControl sx={styles.formControl}>
           <InputLabel id="genre-label">Genre</InputLabel>
