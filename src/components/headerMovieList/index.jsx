@@ -16,21 +16,24 @@ const styles = {
   },
 };
 
-const Header = (props ) => {
-  const title = props.title
+const Header = (props) => {
+  const { title, setCurrentPage } = props;
+
+  const handleGoBack = () => {
+    setCurrentPage((prevCurrentPage) => prevCurrentPage - 1);
+  };
+
+  const handleGoForward = () => {
+    setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);
+  };
 
   return (
     <Paper component="div" sx={styles.root}>
-      <IconButton
-        aria-label="go back"
-      >
+      <IconButton aria-label="go back" onClick={handleGoBack}>
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
-      
 
-      <IconButton
-        aria-label="go forward"
-      >
+      <IconButton aria-label="go forward" onClick={handleGoForward}>
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
     </Paper>

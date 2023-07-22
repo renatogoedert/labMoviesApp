@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-function MovieListPageTemplate({ movies, title, action, vote_average }) {
+function MovieListPageTemplate({ movies, title, action, vote_average, setCurrentPage }) {
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [ratingFilter, setRatingFilter] = useState("0");
@@ -48,7 +48,7 @@ function MovieListPageTemplate({ movies, title, action, vote_average }) {
    <>
       <Grid container sx={styles.root}>
         <Grid item xs={12}>
-          <Header title={title} />
+          <Header title={title} setCurrentPage={setCurrentPage}/>
         </Grid>
         <Grid item container spacing={5}>
         <MovieList action={action} movies={displayedMovies} />
