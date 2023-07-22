@@ -29,6 +29,7 @@ const HomePage = (props) => {
     <PageTemplate
       title="Discover Movies"
       setCurrentPage={handlePageChange}
+      currentPage={currentPage}
       movies={movies}
       action={(movie) => {
         return <AddToFavouritesIcon movie={movie} />
