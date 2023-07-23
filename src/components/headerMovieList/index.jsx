@@ -17,7 +17,6 @@ const styles = {
 };
 
 const Header = ({ title, setCurrentPage, currentPage }) => {
-  console.log(currentPage);
 
   const handleGoBack = () => {
     setCurrentPage((prevCurrentPage) => prevCurrentPage - 1);
