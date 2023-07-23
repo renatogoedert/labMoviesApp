@@ -16,6 +16,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import { Auth0ProviderWithNavigate } from "./components/auth-provider";
+import { AuthenticationGuard } from "./components/auth-guard";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,7 +39,7 @@ const App = () => {
           <MoviesContextProvider>
             <Routes>
             <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
-            <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
+            <Route path="/movies/favourites" element={<AuthenticationGuard component={FavouriteMoviesPage} />} />
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" />} />
