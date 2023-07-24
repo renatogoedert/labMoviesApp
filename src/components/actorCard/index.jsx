@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 // import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
@@ -14,8 +14,8 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router-dom";
-// import Avatar from "@mui/material/Avatar";
-// import { ActorsContext } from "../../contexts/actorsContext";
+import Avatar from "@mui/material/Avatar";
+import { MoviesContext } from "../../contexts/moviesContext";
 
 
 const styles = {
@@ -27,14 +27,14 @@ const styles = {
 };
 
 export default function ActorCard({ actor, action }) {
-  // const { favourites, addToFavourites } = useContext(MoviesContext);
+  const { favouritesActors, addToFavouritesActors } = useContext(MoviesContext);
   // const { mustWatch, addToMustWatch } = useContext(MoviesContext);
 
-  // if (favourites.find((id) => id === movie.id)) {
-  //   movie.favourite = true;
-  // } else {
-  //   movie.favourite = false
-  // }
+  if (favouritesActors.find((id) => id === actor.id)) {
+    actor.favourite = true;
+  } else {
+    actor.favourite = false
+  }
 
   // if (mustWatch.find((id) => id === movie.id)) {
   //   movie.mustWatch = true;
@@ -46,17 +46,13 @@ export default function ActorCard({ actor, action }) {
     <Card sx={styles.card}>
       <CardHeader
         sx={styles.header}
-        // avatar={
-        //   movie.favourite ? (
-        //     <Avatar sx={styles.avatar}>
-        //       <FavoriteIcon />
-        //     </Avatar>
-        //   ) : movie.mustWatch ? (
-        //     <Avatar sx={styles.avatar}>
-        //       <PlaylistAddIcon />
-        //     </Avatar>
-        //   ) : null
-        // }
+        avatar={
+          actor.favourite ? (
+            <Avatar sx={styles.avatar}>
+              <FavoriteIcon />
+            </Avatar>
+          ) : null
+        }
         title={
           <Typography variant="h5" component="p">
             {actor.name}{" "}
@@ -87,7 +83,7 @@ export default function ActorCard({ actor, action }) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        {/* {action(actor)} */}
+        {action(actor)}
         <Link to={`${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...

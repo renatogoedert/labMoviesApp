@@ -46,7 +46,7 @@ const App = () => {
             <Route path="/reviews/:id" element={<MovieReviewPage/>} />
             <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
             <Route path="/movies/toprated" element={<TopRatedMoviesPage />} />
-            <Route path="/fantasymovie" element={<FantasyMovie />} />
+            <Route path="/fantasymovie" element={<AuthenticationGuard component={FantasyMovie} />} />
             <Route path="/actors" element={<ActorsPage />} />
             <Route path="/actors/:id" element={<ActorsDetailsPage />} />
             </Routes>
