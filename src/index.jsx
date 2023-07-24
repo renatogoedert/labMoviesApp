@@ -10,6 +10,7 @@ import MovieReviewPage from "./pages/movieReviewPage";
 import FantasyMovie from "./pages/fantasyMovie";
 import ActorsPage from "./pages/actorsPage";
 import ActorsDetailsPage from "./pages/actorDetailsPage";
+import FavouriteActorsPage from "./pages/favouriteActorsPage";
 import SiteHeader from './components/siteHeader';
 import MoviesContextProvider from "./contexts/moviesContext";
 import { QueryClientProvider, QueryClient } from "react-query";
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/fantasymovie" element={<AuthenticationGuard component={FantasyMovie} />} />
             <Route path="/actors" element={<ActorsPage />} />
             <Route path="/actors/:id" element={<ActorsDetailsPage />} />
+            <Route path="/actors/favourites" element={<AuthenticationGuard component={FavouriteActorsPage} />} />
             </Routes>
           </MoviesContextProvider>
         </Auth0ProviderWithNavigate>
