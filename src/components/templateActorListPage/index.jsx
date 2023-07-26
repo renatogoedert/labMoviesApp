@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import Header from "../actorMovieList";
+import Header from "../headerActorList";
 //import FilterCard from "../filterMoviesCard";
 import Grid from "@mui/material/Grid";
 import Fab from "@mui/material/Fab";
@@ -18,7 +18,7 @@ const styles = {
   },
 };
 
-function ActorListPageTemplate({ actors, name, action }) {
+function ActorListPageTemplate({ actors, name, action, setCurrentPage, currentPage }) {
   // const [titleFilter, setTitleFilter] = useState("");
   // const [genreFilter, setGenreFilter] = useState("0");
   // const [drawerOpen, setDrawerOpen] = useState(false);
@@ -41,9 +41,10 @@ function ActorListPageTemplate({ actors, name, action }) {
   return (
    <>
       <Grid container sx={styles.root}>
-        {/* <Grid item xs={12}>
-          <Header title={title} />
-        </Grid> */}
+        <Header 
+            currentPage={currentPage} 
+            setCurrentPage={setCurrentPage}
+          />
         <Grid item container spacing={5}>
         <ActorList action={action} actors={actors} />
         </Grid>

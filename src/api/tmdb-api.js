@@ -108,9 +108,11 @@ export const getMovie = (args) => {
     });
   };
 
-  export const getActors = () => {
+  export const getActors = (args) => {
+    const [, pagePart] = args.queryKey;
+    const { currentPage } = pagePart;
     return fetch(
-      `https://api.themoviedb.org/3/person/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/person/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=${currentPage}`
     )
       .then((response) => {
         if (!response.ok) {

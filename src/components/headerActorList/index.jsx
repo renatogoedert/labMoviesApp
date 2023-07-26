@@ -15,40 +15,33 @@ const styles = {
     justifyContent: "space-around",
     alignItems: "center",
     flexWrap: "wrap",
-    padding: 1.5,
-  },
-  avatar: {
-    backgroundColor: "rgb(255, 0, 0)",
+    marginBottom: 1.5,
   },
 };
 
-const ActorHeader = (props) => {
-  const actor = props.actor;
-  // const favourites = JSON.parse(localStorage.getItem("favourites"));
-  // const isFavourite = favourites.map((m) => m.id  ).includes(movie.id);
+const Header = ({ title, setCurrentPage, currentPage }) => {
+
+  const handleGoBack = () => {
+    setCurrentPage((prevCurrentPage) => prevCurrentPage - 1);
+  };
+
+  const handleGoForward = () => {
+    setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);
+  };
 
   return (
     <Paper component="div" sx={styles.root}>
-      <IconButton aria-label="go back">
-        <ArrowBackIcon color="primary" fontSize="large" />
+      <IconButton disabled={currentPage===1} aria-label="go back" onClick={handleGoBack}>
+        <ArrowBackIcon color={currentPage===1 ? "disabled" : "primary"} fontSize="large" />
       </IconButton>
 
-      {/* {isFavourite  ?
-        (<Avatar sx={styles.avatar}>
-              <FavoriteIcon />
-            </Avatar>
-        ) : ( null)
-      } */}
-        
-      <Typography variant="h5" component="p">
-        {actor.name}{" "}
-      </Typography>
-        
-      <IconButton aria-label="go forward">
-        <ArrowForwardIcon color="primary" fontSize="large" />
+
+      <IconButton disabled={currentPage===10} aria-label="go forward" onClick={handleGoForward}>
+        <ArrowForwardIcon color={currentPage===10 ? "disabled" : "primary"} fontSize="large" />
       </IconButton>
     </Paper>
   );
 };
 
-export default ActorHeader;
+export default Header;
+

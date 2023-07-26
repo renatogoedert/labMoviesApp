@@ -8,7 +8,7 @@ import AddToFavouritesIcon from '../components/cardIcons/addToFavourites';
 const HomePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, error, isLoading, isError } = useQuery(
-    ["a", {currentPage: currentPage}], 
+    ["movies", {currentPage: currentPage}], 
     getMovies
   );
 
