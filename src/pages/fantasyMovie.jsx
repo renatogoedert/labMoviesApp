@@ -42,15 +42,15 @@ const FantasyMovie = () => {
         ...prevMovie,
         [e.target.name]: e.target.value.replace(/\B(?=(\d{3})+(?!\d))/g, ","),
       }));
-    } else if (e.target.name === "genre") {
+    } else if (e.target.name === "genres") {
       setMovie((prevMovie) => ({
         ...prevMovie,
-        [e.target.name]: e.target.value,
+        [e.target.name]: [{name: e.target.value}],
       }));
     } else {
       setMovie((prevMovie) => ({
         ...prevMovie,
-        [e.target.name]: e.target.value,
+        [e.target.name]: [e.target.value],
       }));
     }
   };

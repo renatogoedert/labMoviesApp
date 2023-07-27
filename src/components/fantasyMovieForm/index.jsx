@@ -5,6 +5,9 @@ import {
   Box,
   MenuItem,
   InputAdornment,
+  Select,
+  OutlinedInput,
+  Chip  
 } from "@mui/material";
 import StarRate from "@mui/icons-material/StarRate";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -70,6 +73,17 @@ const DurationNumericFormatCustom = React.forwardRef(
     );
   }
 );
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 const FantasyMovieForm = ({ movie, handleChange, handleDateChange }) => {
   const { data, error, isLoading, isError } = useQuery("genres", getGenres);
@@ -169,14 +183,23 @@ const FantasyMovieForm = ({ movie, handleChange, handleDateChange }) => {
           onChange={handleChange}
         />
 
-        <TextField
-          select
-          defaultValue="Action"
+        <Select
+          multiple
           label="genres"
           type="genres"
           id="genres"
           name="genres"
+          value={[]}
           onChange={handleChange}
+          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+          renderValue={(selected) => (
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+              {selected.map((value) => (
+                <Chip key={value} label={value} />
+              ))}
+            </Box>
+          )}
+          MenuProps={MenuProps}
         >
           {genres.map((genre) => {
             return (
@@ -185,7 +208,7 @@ const FantasyMovieForm = ({ movie, handleChange, handleDateChange }) => {
               </MenuItem>
             );
           })}
-        </TextField>
+        </Select>
       </FormControl>
     </Box>
   );
