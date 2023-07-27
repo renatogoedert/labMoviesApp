@@ -171,6 +171,7 @@ const FantasyMovieForm = ({ movie, handleChange, handleDateChange }) => {
 
         <TextField
           select
+          defaultValue="Action"
           label="genres"
           type="genres"
           id="genres"
@@ -179,7 +180,7 @@ const FantasyMovieForm = ({ movie, handleChange, handleDateChange }) => {
         >
           {genres.map((genre) => {
             return (
-              <MenuItem key={genre.id} value={genre}>
+              <MenuItem key={genre.id} value={genre.name}>
                 {genre.name}
               </MenuItem>
             );

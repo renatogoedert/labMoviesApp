@@ -5,7 +5,7 @@ import FantasyMovieForm from "../components/fantasyMovieForm";
 import dayjs from "dayjs";
 
 const FantasyMovie = () => {
-  const [movie, setMovie] = useState( {
+  const [movie, setMovie] = useState({
     genres: [
       {
         id: 14,
@@ -37,20 +37,22 @@ const FantasyMovie = () => {
   });
 
   const handleChange = (e) => {
-    if(e.target.name==="revenue"){
+    if (e.target.name === "revenue") {
       setMovie((prevMovie) => ({
         ...prevMovie,
         [e.target.name]: e.target.value.replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      
-      }))
-    } else if(e.target.name==="genre"){
-      console.log(e)
+      }));
+    } else if (e.target.name === "genre") {
+      setMovie((prevMovie) => ({
+        ...prevMovie,
+        [e.target.name]: e.target.value,
+      }));
     } else {
-    setMovie((prevMovie) => ({
-      ...prevMovie,
-      [e.target.name]: e.target.value,
-    
-    }))};
+      setMovie((prevMovie) => ({
+        ...prevMovie,
+        [e.target.name]: e.target.value,
+      }));
+    }
   };
 
   const handleDateChange = (newDate) => {
@@ -66,7 +68,10 @@ const FantasyMovie = () => {
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
-            <FantasyMovieForm handleDateChange={handleDateChange} handleChange={handleChange}/>
+            <FantasyMovieForm
+              handleDateChange={handleDateChange}
+              handleChange={handleChange}
+            />
           </PageTemplate>
         </>
       ) : (
@@ -77,4 +82,3 @@ const FantasyMovie = () => {
 };
 
 export default FantasyMovie;
-
