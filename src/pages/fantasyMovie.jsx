@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
+import FantasyMovieForm from "../components/fantasyMovieForm";
+import dayjs from "dayjs";
 
 const FantasyMovie = () => {
   const [movie, setMovie] = useState( {
@@ -35,12 +37,28 @@ const FantasyMovie = () => {
   });
 
   const handleChange = (e) => {
+    if(e.target.name==="revenue"){
+      setMovie((prevMovie) => ({
+        ...prevMovie,
+        [e.target.name]: e.target.value.replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+      
+      }))
+    } else if(e.target.name==="genre"){
+      console.log(e)
+    } else {
     setMovie((prevMovie) => ({
       ...prevMovie,
       [e.target.name]: e.target.value,
-    }));
+    
+    }))};
   };
 
+  const handleDateChange = (newDate) => {
+    setMovie((prevMovie) => ({
+      ...prevMovie,
+      release_date: dayjs(newDate).format("YYYY-MM-DD"),
+    }));
+  };
 
   return (
     <>
@@ -48,24 +66,7 @@ const FantasyMovie = () => {
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
-            <form>
-              <label htmlFor="title">Title:</label>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                onChange={handleChange}
-              />
-            </form>
-            <form>
-              <label htmlFor="overview">Overview:</label>
-              <input
-                type="overview"
-                id="titoverviewle"
-                name="overview"
-                onChange={handleChange}
-              />
-            </form>
+            <FantasyMovieForm handleDateChange={handleDateChange} handleChange={handleChange}/>
           </PageTemplate>
         </>
       ) : (

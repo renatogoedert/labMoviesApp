@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-const TemplateMoviePage = ({ movie, children }) => {
+const TemplateMoviePage = ({ movie, children, movies }) => {
   const { data , error, isLoading, isError } = useQuery(
     ["images", { id: movie.id }],
     getMovieImages
@@ -33,6 +33,8 @@ const TemplateMoviePage = ({ movie, children }) => {
     return <h1>{error.message}</h1>;
   }
   const images = data.posters
+
+  console.log(movies)
 
   return (
     <>

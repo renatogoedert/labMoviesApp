@@ -25,8 +25,6 @@ const ActorPage = (props) => {
   
   const actors = data ? data.results : [];
 
-  console.log(actors)
-
   return (
     <PageTemplate
       title="Discover Actors"

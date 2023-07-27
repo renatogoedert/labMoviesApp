@@ -1,5 +1,5 @@
 export const getMovies = (args) => {
-  //console.log (args)
+  // console.log (args)
   const [, pagePart] = args.queryKey;
   const { currentPage } = pagePart;
   return fetch(

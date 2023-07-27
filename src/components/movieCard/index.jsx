@@ -25,7 +25,7 @@ const styles = {
   },
 };
 
-export default function MovieCard({ movie, action }) {
+export default function MovieCard({ movie, action, movies }) {
   const { favourites, addToFavourites } = useContext(MoviesContext);
   const { mustWatch, addToMustWatch } = useContext(MoviesContext);
 
@@ -40,6 +40,7 @@ export default function MovieCard({ movie, action }) {
   } else {
     movie.mustWatch = false
   }
+
 
   return (
     <Card sx={styles.card}>
@@ -88,7 +89,7 @@ export default function MovieCard({ movie, action }) {
       </CardContent>
       <CardActions disableSpacing>
         {action(movie)}
-        <Link to={`/movies/${movie.id}`}>
+      <Link to={{ pathname: `/movies/${movie.id}`, state: {Hello: "movies"}}} >
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
