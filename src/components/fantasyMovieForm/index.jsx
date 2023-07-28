@@ -85,8 +85,9 @@ const MenuProps = {
   },
 };
 
-const FantasyMovieForm = ({ movie, handleChange, handleDateChange }) => {
+const FantasyMovieForm = ({ genre, handleChange, handleDateChange }) => {
   const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -189,7 +190,7 @@ const FantasyMovieForm = ({ movie, handleChange, handleDateChange }) => {
           type="genres"
           id="genres"
           name="genres"
-          value={[]}
+          value={genre}
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
           renderValue={(selected) => (
@@ -201,13 +202,11 @@ const FantasyMovieForm = ({ movie, handleChange, handleDateChange }) => {
           )}
           MenuProps={MenuProps}
         >
-          {genres.map((genre) => {
-            return (
+          {genres.map((genre) => (
               <MenuItem key={genre.id} value={genre.name}>
                 {genre.name}
               </MenuItem>
-            );
-          })}
+            ))}
         </Select>
       </FormControl>
     </Box>
