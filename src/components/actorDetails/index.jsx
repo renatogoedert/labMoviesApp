@@ -42,20 +42,24 @@ const ActorDetails = ( {actor, actorCredits}) => {
       </Typography>
 
       <Stack direction="row" spacing={2}>
-      {actorCredits.cast.slice(0, 10).map((a) => (
-      <Card key={a.id}>
-        <Link to={`/movies/${a.id}`}>
-        <Avatar
-          alt={a.name}
-          src={a.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${a.poster_path}`
-            : null}
-          sx={{ width: 70, height: 70 }}
-        />
-        </Link>
-        <Typography variant="button">{a.title} </Typography>
-        <Typography variant="caption">{a.character}</Typography>
-      </Card>
+      {actorCredits.cast
+        .filter((a) => a.media_type === "movie")
+        .sort((a, b) => b.popularity - a.popularity)
+        .slice(0, 5)
+        .map((m) => (
+        <Card key={m.id}>
+          <Link to={`/movies/${m.id}`}>
+          <Avatar
+            alt={m.name}
+            src={m.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${m.poster_path}`
+              : null}
+            sx={{ width: 70, height: 70 }}
+          />
+          </Link>
+          <Typography variant="button">{m.title} </Typography>
+          <Typography variant="caption">{m.character}</Typography>
+        </Card>
       ))}
       </Stack>
 
