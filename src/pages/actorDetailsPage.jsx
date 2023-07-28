@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ActorDetails from "../components/actorDetails";
 import PageTemplate from "../components/templateActorPage";
 import { getActor } from '../api/tmdb-api'
-import { getActorDetais } from '../api/tmdb-api'
+import { getActorCredits } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 
@@ -17,7 +17,7 @@ const ActorDetailsPage = () => {
 
   const { data: actorCredits } = useQuery(
     ["actorCredits", { id: id }],
-    getActorDetais
+    getActorCredits
   );
 
   if (isLoading) {
