@@ -33,7 +33,7 @@ export const getMovie = (args) => {
  });
 };
 
-export const getMovieCredites = (args) => {
+export const getMovieCredits = (args) => {
   //console.log(args)
   const [, idPart] = args.queryKey;
   const { id } = idPart;

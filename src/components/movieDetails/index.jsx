@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
@@ -8,7 +9,10 @@ import Typography from "@mui/material/Typography";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from '../movieReviews'
+import MovieReviews from '../movieReviews';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import Card from '@mui/material/Stack';
 
 const styles = {
   chipSet: {
@@ -30,9 +34,9 @@ const styles = {
   },
 };
 
-const MovieDetails = ( {movie}) => {
-  const [drawerOpen, setDrawerOpen] = useState(false); // New
-  console.log(movie.genres)
+const MovieDetails = ( {movie, movieCredits}) => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  console.log(movieCredits)
   return (
     <>
       <Typography variant="h5" component="h3">
@@ -42,6 +46,24 @@ const MovieDetails = ( {movie}) => {
       <Typography variant="h6" component="p">
         {movie.overview}
       </Typography>
+
+      <Stack direction="row" spacing={2}>
+      {movieCredits.cast.slice(0, 5).map((a) => (
+      <Card key={a.name}>
+        <Link to={`/actors/${a.id}`}>
+        <Avatar
+          alt={a.name}
+          src={a.profile_path
+            ? `https://image.tmdb.org/t/p/w500/${a.profile_path}`
+            : null}
+          sx={{ width: 70, height: 70 }}
+        />
+        </Link>
+        <Typography variant="button">{a.name} </Typography>
+        <Typography variant="caption">{a.character}</Typography>
+      </Card>
+      ))}
+      </Stack>
 
       <Paper component="ul" sx={styles.chipSet}>
         <li>

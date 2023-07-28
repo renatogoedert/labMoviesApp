@@ -34,8 +34,6 @@ const TemplateMoviePage = ({ movie, children, movies }) => {
   }
   const images = data.posters
 
-  console.log(movies)
-
   return (
     <>
       <MovieHeader movie={movie} />
