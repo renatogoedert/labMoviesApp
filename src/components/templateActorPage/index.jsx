@@ -42,7 +42,7 @@ const TemplateActorPage = ({ actor, children }) => {
         <Grid item xs={3}>
           <div sx={styles.gridListRoot}>
             <ImageList cols={1}>
-              {images.map((image) => (
+              {images.slice(0, 5).map((image) => (
                 <ImageListItem
                   key={image.file_path}
                   sx={styles.gridListTile}
