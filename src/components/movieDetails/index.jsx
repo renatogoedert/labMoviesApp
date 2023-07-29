@@ -47,7 +47,7 @@ const MovieDetails = ( {movie, movieCredits}) => {
       </Typography>
 
       <Stack direction="row" spacing={2}>
-      {movieCredits.cast.slice(0, 5).map((a) => (
+      { movieCredits.cast.slice(0, 5).map((a) => (
       <Card key={a.name}>
         <Link to={`/actors/${a.id}`}>
         <Avatar

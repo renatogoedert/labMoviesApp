@@ -13,10 +13,7 @@ import {
 } from "@mui/material";
 
 const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
-  const [name, setName] = useState("");
-  const [character, setCharacter] = useState("");
-  const [id, setId] = useState("");
-  const [profile_path, setProfile_path] = useState("");
+  const [cast, setCast] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { data, error, isLoading, isError } = useQuery(
     ["actors", { currentPage: currentPage }],
@@ -35,14 +32,27 @@ const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(character);
+    const castId = cast[0].id;
+    const isIdExists = movieCredits.cast.some((item) => item.id === castId);
+  
+    let updatedCast;
+  
+    if (isIdExists) {
+      updatedCast = movieCredits.cast.filter((item) => item.id !== castId);
+    } else {
+      updatedCast = [...movieCredits.cast, ...cast];
+    }
+  
+    setMovieCredits(prevMovies => ({ ...prevMovies, cast: updatedCast }));
+    console.log(movieCredits);
   };
+  
 
   const actors = data ? data.results : [];
 
   return (
     <Stack direction="row" spacing={2}>
-      {actors.slice(0, 5).map((a) => (
+      {actors.map((a) => (
         <form key={a.name} onSubmit={handleClick}>
           <FormGroup>
             <Avatar
@@ -60,15 +70,15 @@ const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
                 label="Cast As" 
                 variant="standard" 
                 onChange={(e) => 
-                    setMovieCredits({
-                        cast: [{
+                    setCast(
+                        [{
                             name: a.name,
                             id: a.id,
                             profile_path: a.profile_path,
                             character:e.target.value
                     }]
-                    })}/>
-            <Button type="submit">Submit</Button>
+                    )}/>
+            <Button type="submit" onClick={console.log("Hi!")}>Submit</Button>
           </FormGroup>
         </form>
       ))}
