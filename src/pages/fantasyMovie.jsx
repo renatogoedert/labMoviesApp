@@ -4,7 +4,7 @@ import PageTemplate from "../components/templateMoviePage";
 import FantasyMovieForm from "../components/fantasyMovieForm";
 import dayjs from "dayjs";
 import FantasyMovieCast from "../components/fantasyMovieCast";
-import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 
 const FantasyMovie = () => {
   const [genre, setGenre] = useState([]);
@@ -61,10 +61,11 @@ const FantasyMovie = () => {
   const [movieCredits, setMovieCredits] = useState({
     cast: [
       {
-        "id": "",
-        "name": "",
-        "profile_path": "",
-        "character": "",
+        id: "",
+        name: "",
+        profile_path: "",
+        character: "",
+        display: true,
       },
    ] })
 
@@ -74,7 +75,9 @@ const FantasyMovie = () => {
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} movieCredits={movieCredits}/>
-            <Grid>
+
+
+            <Stack direction="row" spacing={2} sx={{ marginTop: '30px' }}>
             <FantasyMovieForm
               handleDateChange={handleDateChange}
               handleChange={handleChange}
@@ -84,7 +87,9 @@ const FantasyMovie = () => {
               movieCredits={movieCredits}
               setMovieCredits={setMovieCredits}
             />
-            </Grid>
+             </Stack>
+
+
           </PageTemplate>
         </>
       ) : (

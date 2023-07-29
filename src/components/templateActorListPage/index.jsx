@@ -18,7 +18,13 @@ const styles = {
   },
 };
 
-function ActorListPageTemplate({ actors, name, action, setCurrentPage, currentPage }) {
+function ActorListPageTemplate({
+  actors,
+  name,
+  action,
+  setCurrentPage,
+  currentPage,
+}) {
   // const [titleFilter, setTitleFilter] = useState("");
   // const [genreFilter, setGenreFilter] = useState("0");
   // const [drawerOpen, setDrawerOpen] = useState(false);
@@ -39,14 +45,15 @@ function ActorListPageTemplate({ actors, name, action, setCurrentPage, currentPa
   // };
 
   return (
-   <>
+    <>
       <Grid container sx={styles.root}>
-        <Header 
-            currentPage={currentPage} 
-            setCurrentPage={setCurrentPage}
-          />
+        <Header
+          title={name}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
         <Grid item container spacing={5}>
-        <ActorList action={action} actors={actors} />
+          <ActorList action={action} actors={actors} />
         </Grid>
       </Grid>
       {/* <Fab
@@ -68,7 +75,7 @@ function ActorListPageTemplate({ actors, name, action, setCurrentPage, currentPa
           genreFilter={genreFilter}
         />
       </Drawer> */}
-    </>  
+    </>
   );
 }
 export default ActorListPageTemplate;
