@@ -5,7 +5,6 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Pagination from '@mui/material/Pagination';
 
-
 const styles = {
   root: {
     display: "flex",

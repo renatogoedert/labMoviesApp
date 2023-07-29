@@ -3,6 +3,7 @@ import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
 import FantasyMovieForm from "../components/fantasyMovieForm";
 import dayjs from "dayjs";
+import FantasyMovieCast from "../components/fantasyMovieCast";
 
 const FantasyMovie = () => {
   const [genre, setGenre] = useState([]);
@@ -76,6 +77,10 @@ const FantasyMovie = () => {
               handleDateChange={handleDateChange}
               handleChange={handleChange}
               genre={genre}
+            />
+            <FantasyMovieCast
+              movieCredits={movieCredits}
+              setMovieCredits={setMovieCredits}
             />
           </PageTemplate>
         </>
