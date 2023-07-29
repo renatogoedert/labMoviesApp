@@ -3,8 +3,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
+import Pagination from '@mui/material/Pagination';
+
 
 const styles = {
   root: {
@@ -16,26 +16,15 @@ const styles = {
   },
 };
 
-const Header = ({ title, setCurrentPage, currentPage }) => {
+const Header = ({ setCurrentPage, currentPage }) => {
 
-  const handleGoBack = () => {
-    setCurrentPage((prevCurrentPage) => prevCurrentPage - 1);
-  };
-
-  const handleGoForward = () => {
-    setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);
+  const handleChange = (event, value) => {
+    setCurrentPage(value);
   };
 
   return (
     <Paper component="div" sx={styles.root}>
-      <IconButton disabled={currentPage===1} aria-label="go back" onClick={handleGoBack}>
-        <ArrowBackIcon color={currentPage===1 ? "disabled" : "primary"} fontSize="large" />
-      </IconButton>
-
-
-      <IconButton disabled={currentPage===10} aria-label="go forward" onClick={handleGoForward}>
-        <ArrowForwardIcon color={currentPage===10 ? "disabled" : "primary"} fontSize="large" />
-      </IconButton>
+           <Pagination size="large" defaultPage={10} color="primary" count={10} page={currentPage} onChange={handleChange} />
     </Paper>
   );
 };

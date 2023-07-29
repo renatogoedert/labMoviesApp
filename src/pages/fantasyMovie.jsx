@@ -56,12 +56,22 @@ const FantasyMovie = () => {
     }));
   };
 
+  const [movieCredits, setMovieCredits] = useState({
+    cast: [
+      {
+        "id": 819,
+        "name": "Edward Norton",
+        "profile_path": "/8nytsqL59SFJTVYVrN72k6qkGgJ.jpg",
+        "character": "The Narrator",
+      },
+   ] })
+
   return (
     <>
       {movie ? (
         <>
           <PageTemplate movie={movie}>
-            <MovieDetails movie={movie} />
+            <MovieDetails movie={movie} movieCredits={movieCredits}/>
             <FantasyMovieForm
               handleDateChange={handleDateChange}
               handleChange={handleChange}

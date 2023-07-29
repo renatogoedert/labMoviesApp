@@ -29,7 +29,6 @@ const styles = {
 
 const ActorDetails = ( {actor, actorCredits}) => {
   // const [drawerOpen, setDrawerOpen] = useState(false);
-  console.log(actorCredits)
 
   return (
     <>
