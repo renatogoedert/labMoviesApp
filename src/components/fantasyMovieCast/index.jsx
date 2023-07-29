@@ -13,6 +13,10 @@ import {
 } from "@mui/material";
 
 const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
+  const [name, setName] = useState("");
+  const [character, setCharacter] = useState("");
+  const [id, setId] = useState("");
+  const [profile_path, setProfile_path] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const { data, error, isLoading, isError } = useQuery(
     ["actors", { currentPage: currentPage }],
@@ -31,7 +35,7 @@ const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    console.log(character);
   };
 
   const actors = data ? data.results : [];
@@ -39,7 +43,7 @@ const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
   return (
     <Stack direction="row" spacing={2}>
       {actors.slice(0, 5).map((a) => (
-        <form key={a.name} action={handleClick}>
+        <form key={a.name} onSubmit={handleClick}>
           <FormGroup>
             <Avatar
               alt={a.name}
@@ -51,7 +55,19 @@ const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
               sx={{ width: 70, height: 70 }}
             />
             <Typography variant="button">{a.name} </Typography>
-            <TextField id="standard-basic" label="Cast As" variant="standard" />
+            <TextField 
+                id="standard-basic" 
+                label="Cast As" 
+                variant="standard" 
+                onChange={(e) => 
+                    setMovieCredits({
+                        cast: [{
+                            name: a.name,
+                            id: a.id,
+                            profile_path: a.profile_path,
+                            character:e.target.value
+                    }]
+                    })}/>
             <Button type="submit">Submit</Button>
           </FormGroup>
         </form>
