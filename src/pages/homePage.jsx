@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import HomePageSearchBar from "../components/homePageSearchBar";
 import PageTemplate from "../components/templateMovieListPage";
 import { getMovies, getActors } from "../api/tmdb-api";
 import { useQuery } from "react-query";
@@ -8,7 +9,7 @@ import AddToFavouritesIcon from '../components/cardIcons/addToFavourites';
 const HomePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState("popularity.desc");
-  const [year, setYear] = useState("");
+  const [year, setYear] = useState();
   const [isAdult, setIsAdult] = useState("false")
   const { data, error, isLoading, isError } = useQuery(
     [
@@ -35,6 +36,8 @@ const HomePage = (props) => {
   const movies = data ? data.results : [];
 
   return (
+    <>
+    <HomePageSearchBar/>
     <PageTemplate
       title="Discover Movies"
       setCurrentPage={handlePageChange}
@@ -44,6 +47,7 @@ const HomePage = (props) => {
         return <AddToFavouritesIcon movie={movie} />
       }}
     />
+    </>
   );
 };
 export default HomePage;
