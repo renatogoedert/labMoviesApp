@@ -5,7 +5,7 @@ export const getMovies = (args) => {
   const { year } = yearPart;
   const { isAdult } = isAdultPart;
   return fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=${isAdult}&include_video=false&sort_by=${sortBy}&year=${year}&page=${currentPage}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=${isAdult}&include_video=false&sort_by=${sortBy}&primary_release_year=${year}&page=${currentPage}`
   ).then((response) => {
     if (!response.ok) {
       console.log(response)
