@@ -16,7 +16,14 @@ import img from "../../images/film-poster-placeholder.png";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
-import Draggable from "react-draggable";
+import { closestCenter, DndContext } from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -41,8 +48,21 @@ export default function ActorCard({ actor, action }) {
   // } else {
   //   movie.mustWatch = false
   // }
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: actor.id });
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
 
   return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className="actor"
+    >
       <Card sx={styles.card}>
         <CardHeader
           sx={styles.header}
@@ -95,5 +115,6 @@ export default function ActorCard({ actor, action }) {
           </Link>
         </CardActions>
       </Card>
+    </div>
   );
 }
