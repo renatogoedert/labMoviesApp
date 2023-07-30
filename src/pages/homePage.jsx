@@ -7,8 +7,17 @@ import AddToFavouritesIcon from '../components/cardIcons/addToFavourites';
 
 const HomePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortBy, setSortBy] = useState("popularity.desc");
+  const [year, setYear] = useState("");
+  const [isAdult, setIsAdult] = useState("false")
   const { data, error, isLoading, isError } = useQuery(
-    ["movies", {currentPage: currentPage}], 
+    [
+      "movies", 
+      {currentPage: currentPage}, 
+      {sortBy: sortBy},
+      {year: year},
+      {isAdult: isAdult}
+    ], 
     getMovies
   );
 

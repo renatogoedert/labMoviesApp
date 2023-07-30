@@ -33,12 +33,12 @@ const FavouriteActorsPage = (props) => {
     title="Favourite Actors"
     actors={actors}
     action={(actor) => {
-    //   return (
-    //     <>
-    //       <RemoveFromFavouritesIconActor actor={actor} />
-    //       {/* <WriteReview actor={actor} /> */}
-    //     </>
-      // );
+      return (
+        <>
+          <RemoveFromFavouritesIconActor actor={actor} />
+          {/* <WriteReview actor={actor} /> */}
+        </>
+      );
     }}
   />
 
