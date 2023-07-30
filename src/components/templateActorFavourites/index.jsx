@@ -13,7 +13,6 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { useMutation, useQuery, useQueryClient   } from "react-query";
 
 const styles = {
   root: {
@@ -27,12 +26,12 @@ const styles = {
   },
 };
 
-function ActorListPageTemplate({
+function ActorFavouritesPageTemplate({
   actors,
   name,
   action,
   setCurrentPage,
-  currentPage
+  currentPage,
 }) {
   // const [titleFilter, setTitleFilter] = useState("");
   // const [genreFilter, setGenreFilter] = useState("0");
@@ -52,21 +51,40 @@ function ActorListPageTemplate({
   //   if (type === "title") setTitleFilter(value);
   //   else setGenreFilter(value);
   // };
+  const [favActors, setFavActors] = useState(actors);
+  const [inputValue, setInputValue] = useState("");
 
+  const onDragEnd = (event) => {
+    const { active, over } = event;
+    if (active.id === over.id) {
+      return;
+    }
+
+    setFavActors((favActors) => {
+      const oldIndex = favActors.findIndex((actor) => actor.id === active.id);
+      const newIndex = favActors.findIndex((actor) => actor.id === over.id);
+      return arrayMove(favActors, oldIndex, newIndex);
+    });
+  };
 
   return (
     <>
       <Grid container sx={styles.root}>
-        <Header
+        {/* <Header
           title={name}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-        />
-        <Grid item container spacing={5}>
-
-              <ActorList action={action} actors={actors} />
-
-        </Grid>
+        /> */}
+        <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+          <SortableContext
+            items={favActors}
+            strategy={verticalListSortingStrategy}
+          >
+            <Grid item container spacing={5}>
+              <ActorList action={action} actors={favActors} />
+            </Grid>
+          </SortableContext>
+        </DndContext>
       </Grid>
 
       {/* <Fab
@@ -91,4 +109,4 @@ function ActorListPageTemplate({
     </>
   );
 }
-export default ActorListPageTemplate;
+export default ActorFavouritesPageTemplate;

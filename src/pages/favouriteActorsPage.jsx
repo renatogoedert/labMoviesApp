@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PageTemplate from "../components/templateActorListPage";
+import PageTemplate from "../components/templateActorFavourites";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getActor } from "../api/tmdb-api";
@@ -33,12 +33,12 @@ const FavouriteActorsPage = (props) => {
     title="Favourite Actors"
     actors={actors}
     action={(actor) => {
-      return (
-        <>
-          <RemoveFromFavouritesIconActor actor={actor} />
-          {/* <WriteReview actor={actor} /> */}
-        </>
-      );
+    //   return (
+    //     <>
+    //       <RemoveFromFavouritesIconActor actor={actor} />
+    //       {/* <WriteReview actor={actor} /> */}
+    //     </>
+      // );
     }}
   />
 

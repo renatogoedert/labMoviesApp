@@ -37,7 +37,7 @@ const ActorDetailsPage = () => {
           </PageTemplate>
         </>
       ) : (
-        <p>Waiting for actor details</p>
+        <p>Waiting for actor details</p> 
       )}
     </>
   );
