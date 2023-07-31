@@ -22,7 +22,6 @@ const styles = {
     padding: 1.5,
   },
   item: { m: 1 },
-  
 };
 
 const HomePageSearchBar = ({
@@ -33,9 +32,6 @@ const HomePageSearchBar = ({
   isAdult,
   setIsAdult,
 }) => {
-  const handleChange = (event) => {};
-  console.log(isAdult);
-
   return (
     <Paper component="div" sx={styles.root}>
       <TextField
