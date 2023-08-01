@@ -1,15 +1,14 @@
 export default {
-    
-        "adult": false,
-        "id": 224513,
-        "name": "Ana de Armas",
-        "original_name": "Ana de Armas",
-        "media_type": "person",
-        "popularity": 349.766,
-        "gender": 1,
-        "known_for_department": "Acting",
-        "profile_path": "/3vxvsmYLTf4jnr163SUlBIw51ee.jpg",
-        "known_for": [
+        adult: false,
+        id: 224513,
+        name: "Ana de Armas",
+        original_name: "Ana de Armas",
+        media_type: "person",
+        popularity: 349.766,
+        gender: 1,
+        known_for_department: "Acting",
+        profile_path: "/3vxvsmYLTf4jnr163SUlBIw51ee.jpg",
+        known_for: [
           {
             "adult": false,
             "backdrop_path": "/ilRyazdMJwN05exqhwK4tMKBYZs.jpg",
@@ -66,12 +65,11 @@ export default {
               80,
               18
             ],
-            "popularity": 29.906,
-            "release_date": "2016-08-17",
-            "video": false,
-            "vote_average": 6.892,
-            "vote_count": 4324
+            popularity: 29.906,
+            release_date: "2016-08-17",
+            video: false,
+            vote_average: 6.892,
+            vote_count: 4324
           }
         ]
-      
 };

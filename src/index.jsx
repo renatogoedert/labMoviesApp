@@ -11,49 +11,73 @@ import FantasyMovie from "./pages/fantasyMovie";
 import ActorsPage from "./pages/actorsPage";
 import ActorsDetailsPage from "./pages/actorDetailsPage";
 import FavouriteActorsPage from "./pages/favouriteActorsPage";
-import SiteHeader from './components/siteHeader';
+import SiteHeader from "./components/siteHeader";
 import MoviesContextProvider from "./contexts/moviesContext";
 import { QueryClientProvider, QueryClient } from "react-query";
-import { ReactQueryDevtools } from 'react-query/devtools';
-import AddMovieReviewPage from './pages/addMovieReviewPage';
+import { ReactQueryDevtools } from "react-query/devtools";
+import AddMovieReviewPage from "./pages/addMovieReviewPage";
 import { Auth0ProviderWithNavigate } from "./components/auth-provider";
 import { AuthenticationGuard } from "./components/auth-guard";
+import { Provider as SupabaseProvider } from "react-supabase";
+import { supabase } from './api/supabase';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 360000,
-      refetchInterval: 360000, 
-      refetchOnWindowFocus: false
+      refetchInterval: 360000,
+      refetchOnWindowFocus: false,
     },
   },
 });
 
+
 const App = () => {
-  const refresh = () => window.location.reload(true)
-  
+  const refresh = () => window.location.reload(true);
+
   return (
     <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <Auth0ProviderWithNavigate>
-        <SiteHeader />
-          <MoviesContextProvider>
-            <Routes>
-            <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
-            <Route path="/movies/favourites" element={<AuthenticationGuard component={FavouriteMoviesPage} />} />
-            <Route path="/movies/:id" element={<MoviePage />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" />} />
-            <Route path="/reviews/:id" element={<MovieReviewPage/>} />
-            <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-            <Route path="/movies/toprated" element={<TopRatedMoviesPage />} />
-            <Route path="/fantasymovie" element={<AuthenticationGuard component={FantasyMovie} />} />
-            <Route path="/actors" element={<ActorsPage />} />
-            <Route path="/actors/:id" element={<ActorsDetailsPage />} />
-            <Route path="/actors/favourites" element={<AuthenticationGuard component={FavouriteActorsPage} />} />
-            </Routes>
-          </MoviesContextProvider>
-        </Auth0ProviderWithNavigate>
+      <BrowserRouter>
+        <SupabaseProvider value={supabase}>
+          <Auth0ProviderWithNavigate>
+            <SiteHeader />
+            <MoviesContextProvider>
+              <Routes>
+                <Route path="/reviews/form" element={<AddMovieReviewPage />} />
+                <Route
+                  path="/movies/favourites"
+                  element={
+                    <AuthenticationGuard component={FavouriteMoviesPage} />
+                  }
+                />
+                <Route path="/movies/:id" element={<MoviePage />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="*" element={<Navigate to="/" />} />
+                <Route path="/reviews/:id" element={<MovieReviewPage />} />
+                <Route
+                  path="/movies/upcoming"
+                  element={<UpcomingMoviesPage />}
+                />
+                <Route
+                  path="/movies/toprated"
+                  element={<TopRatedMoviesPage />}
+                />
+                <Route
+                  path="/fantasymovie"
+                  element={<AuthenticationGuard component={FantasyMovie} />}
+                />
+                <Route path="/actors" element={<ActorsPage />} />
+                <Route path="/actors/:id" element={<ActorsDetailsPage />} />
+                <Route
+                  path="/actors/favourites"
+                  element={
+                    <AuthenticationGuard component={FavouriteActorsPage} />
+                  }
+                />
+              </Routes>
+            </MoviesContextProvider>
+          </Auth0ProviderWithNavigate>
+        </SupabaseProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
