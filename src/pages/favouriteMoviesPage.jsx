@@ -35,7 +35,8 @@ const FavouriteMoviesPage = (props) => {
     const fetch = async() => {
       const { data, error } = await supabase.from('favouriteMovies').select()
       data.map((d) => (
-        setMovies([d.movie])
+        // console.log(d.movie)
+        setMovies(prev => [...prev, d.movie])
       ))
     }
 
