@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { supabase } from "../api/supabase";
 
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
   const [favourites, setFavourites] = useState([]);
-  const [myReviews, setMyReviews] = useState( {} );
+  const [myReviews, setMyReviews] = useState({});
   const [mustWatch, setMustWatch] = useState([]);
-  const [favouritesActors, setFavouritesActors] = useState([]);
+  const [favouritesActors, setFavouritesActors] = useState([
+    // useEffect(() => {
+    //   let list = []
+    //   const fetch = async() => {
+    //     const { data, error } = await supabase.from('favouriteActors').select("id")
+    //     data.map((d) => (
+    //       list.push(d.id)
+    //     ))
+    //     return list
+    //   }
+    //   console.log(list)
+    //   fetch()
+    // },[])
+  ]);
 
   const addToFavourites = (movie) => {
     let updatedFavourites = [...favourites];
@@ -28,23 +42,41 @@ const MoviesContextProvider = (props) => {
     setMustWatch(updatedMustWatch);
   };
 
-  const addReview = (movie, review) => {   
-    setMyReviews( {...myReviews, [movie.id]: review } )
+  const addReview = (movie, review) => {
+    setMyReviews({ ...myReviews, [movie.id]: review });
   };
 
-  const addToFavouritesActors = (actor) => {
+  useEffect(() => {
+    let list = [];
+    const fetch = async () => {
+      const { data, error } = await supabase
+        .from("favouriteActors")
+        .select("id");
+      data.map((d) => list.push(d.id));
+      return list;
+    };
+    setFavouritesActors(list);
+    fetch();
+  }, []);
+
+  async function addToFavouritesActors(actor) {
     let updatedFavourites = [...favouritesActors];
     if (!favouritesActors.includes(actor.id)) {
       updatedFavourites.push(actor.id);
+      const { data, error } = await supabase
+        .from("favouriteActors")
+        .insert([{ id: actor.id }]);
+      console.log(data);
     }
+    console.log(updatedFavourites);
     setFavouritesActors(updatedFavourites);
-  };
+  }
 
   const removeFromFavouritesActors = (actor) => {
     setFavouritesActors(favouritesActors.filter((aId) => aId !== actor.id));
   };
 
- return (
+  return (
     <MoviesContext.Provider
       value={{
         favourites,
@@ -52,10 +84,10 @@ const MoviesContextProvider = (props) => {
         removeFromFavourites,
         addReview,
         mustWatch,
-        addToMustWatch,    
+        addToMustWatch,
         favouritesActors,
         addToFavouritesActors,
-        removeFromFavouritesActors
+        removeFromFavouritesActors,
       }}
     >
       {props.children}

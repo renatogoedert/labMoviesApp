@@ -1,9 +1,8 @@
-import React, { useState  } from "react";
+import React, { useState } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { supabase } from '../../api/supabase';
-
+import { supabase } from "../../api/supabase";
 
 const AddToFavouritesIcon = ({ movie }) => {
   const [isFavourite, setIsFavourite] = useState(false);
@@ -14,9 +13,15 @@ const AddToFavouritesIcon = ({ movie }) => {
     e.preventDefault();
     setLoading(true);
     if (!isFavourite) {
-    const { data, error } = await supabase.from('favouriteMovies').insert([{ movie }]);
-    setIsFavourite(true)
-    setLoading(false);
+      const { data, error } = await supabase
+        .from("FavouritesMovies")
+        .insert([{ id:movie.id }]);
+      setIsFavourite(true);
+      setLoading(false);
+    } else {
+      await supabase.from("favouriteMovies").delete().eq([{ movie }]);
+      setIsFavourite(true);
+      setLoading(false);
     }
 
     // toast({
