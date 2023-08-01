@@ -6,9 +6,9 @@ import { MoviesContext } from "../../contexts/moviesContext";
 const RemoveFromFavouritesIconActor = ({ actor }) => {
   const context = useContext(MoviesContext);
 
-  const onUserRequest = (e) => {
-    e.preventDefault();
-    context.removeFromFavouritesActors(actor);
+  async function onUserRequest() {
+    const { data, error } = await supabase.from('favouriteActors').delete().eq('id', actor.id);
+    console.log(error)
   };
 
 return (

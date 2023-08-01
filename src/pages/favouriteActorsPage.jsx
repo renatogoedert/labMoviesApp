@@ -19,6 +19,7 @@ const FavouriteActorsPage = (props) => {
       };
     })
   );
+  
   // Check if any of the parallel queries is still loading.
   const isLoading = favouriteActorQueries.find((a) => a.isLoading === true);
 
@@ -27,7 +28,8 @@ const FavouriteActorsPage = (props) => {
   }
 
   const actors = favouriteActorQueries.map((q) => q.data);
-
+  
+  console.log(actors)
   return (
     <PageTemplate
     title="Favourite Actors"
