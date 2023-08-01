@@ -1,4 +1,4 @@
-import React, { useContext, useState  } from "react";
+import React, { useState  } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -6,17 +6,18 @@ import { supabase } from '../../api/supabase';
 
 
 const AddToFavouritesIcon = ({ movie }) => {
-  const context = useContext(MoviesContext);
-  const [text, setText] = useState('Hi!');
+  const [isFavourite, setIsFavourite] = useState(false);
   const [loading, setLoading] = useState(false);
   // const toast = useToast();
 
   async function onUserSelect(e) {
     e.preventDefault();
     setLoading(true);
+    if (!isFavourite) {
     const { data, error } = await supabase.from('favouriteMovies').insert([{ movie }]);
+    setIsFavourite(true)
     setLoading(false);
-    setText('');
+    }
 
     // toast({
     //   title: error || 'Task added!',
