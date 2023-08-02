@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 
@@ -11,6 +11,7 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  Button,
 } from "@mui/material";
 
 const styles = {
@@ -24,49 +25,62 @@ const styles = {
   item: { m: 1 },
 };
 
-const HomePageSearchBar = ({
-  sortBy,
-  setSortBy,
-  year,
-  setYear,
-  isAdult,
-  setIsAdult,
-}) => {
-  return (
-    <Paper component="div" sx={styles.root}>
-      <TextField
-        select
-        sx={styles.item}
-        label="year"
-        type="year"
-        id="year"
-        name="year"
-        defaultValue={year}
-        onChange={(event) => setYear(event.target.value)}
-      >
-        {Array.from(
-          { length: new Date().getFullYear() - 1700 + 1 },
-          (_, index) => 1700 + index
-        )
-          .sort((a, b) => b - a)
-          .map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-      </TextField>
+const HomePageSearchBar = ({ setSortBy, setYear, setIsAdult }) => {
+  const [formData, setFormData] = useState({year:2023, sortBy: "popularity.desc"});
+  const [ button, setButton ] = useState(false)
 
-      <TextField
-        select
-        sx={styles.item}
-        label="sortBy"
-        type="sortBy"
-        id="sortBy"
-        name="sortBy"
-        defaultValue={sortBy}
-        onChange={(event) => setSortBy(event.target.value)}
-      >
-        <MenuItem key={"Popularity Asc"} value={"popularity.asc"}>
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  };
+
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(button);
+
+    setYear(formData.year);
+    setSortBy(formData.sortBy);
+    setIsAdult(button);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Paper component="div" sx={styles.root}>
+        <TextField
+          select
+          sx={styles.item}
+          label="year"
+          type="year"
+          id="year"
+          name="year"
+          value={formData.year}
+          onChange={handleChange}
+        >
+          {Array.from(
+            { length: new Date().getFullYear() - 1700 + 1 },
+            (_, index) => 1700 + index
+          )
+            .sort((a, b) => b - a)
+            .map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+        </TextField>
+
+        <TextField
+          select
+          sx={styles.item}
+          label="sortBy"
+          type="sortBy"
+          id="sortBy"
+          name="sortBy"
+          value={formData.sortBy}
+          onChange={handleChange}
+        >
+                <MenuItem key={"Popularity Asc"} value={"popularity.asc"}>
           Popularity Asc
         </MenuItem>
         <MenuItem key={"Popularity Desc"} value={"popularity.desc"}>
@@ -96,23 +110,28 @@ const HomePageSearchBar = ({
         <MenuItem key={"Vote Count Desc"} value={"vote_count.desc"}>
           Vote Count Desc
         </MenuItem>
-      </TextField>
+        </TextField>
 
-      <FormControlLabel
-        label="Adult"
-        sx={styles.item}
-        control={
-          <Checkbox
-            icon={<FavoriteBorder />}
-            checkedIcon={<Favorite />}
-            checked={isAdult}
-            onChange={(event) => setIsAdult((prevIsAdult) => !prevIsAdult)}
-            inputProps={{ "aria-label": "controlled" }}
-            sx={{ "& .MuiSvgIcon-root": { fontSize: 35 } }}
-          />
-        }
-      />
-    </Paper>
+        <FormControlLabel
+          label="Adult"
+          sx={styles.item}
+          control={
+            <Checkbox
+              icon={<FavoriteBorder />}
+              checkedIcon={<Favorite />}
+              checked={formData.isAdult}
+              onChange={() => setButton((prevButton) => !prevButton)}
+              inputProps={{ "aria-label": "controlled" }}
+              sx={{ "& .MuiSvgIcon-root": { fontSize: 35 } }}
+            />
+          }
+        />
+
+        <Button variant="contained" color="primary" type="submit">
+          Submit
+        </Button>
+      </Paper>
+    </form>
   );
 };
 

@@ -93,11 +93,9 @@ function MovieListPageTemplate({
             items={favMovies}
             strategy={verticalListSortingStrategy}
           > 
-          {/* <Draggable> */}
             <Grid item container spacing={5}>
               <MovieList action={action} movies={favMovies} />
             </Grid>
-            {/* </Draggable> */}
           </SortableContext> 
          </DndContext>
 
