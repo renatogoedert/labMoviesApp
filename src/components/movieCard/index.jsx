@@ -15,6 +15,14 @@ import img from "../../images/film-poster-placeholder.png";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { closestCenter, DndContext } from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -39,60 +47,74 @@ export default function MovieCard({ movie, action }) {
   } else {
     movie.mustWatch = false;
   }
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: movie.id });
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
 
   return (
-    <Card sx={styles.card}>
-      <CardHeader
-        sx={styles.header}
-        avatar={
-          movie.favourite ? (
-            <Avatar sx={styles.avatar}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : movie.mustWatch ? (
-            <Avatar sx={styles.avatar}>
-              <PlaylistAddIcon />
-            </Avatar>
-          ) : null
-        }
-        title={
-          <Typography variant="h5" component="p">
-            {movie.title}{" "}
-          </Typography>
-        }
-      />
-      <CardMedia
-        sx={styles.media}
-        image={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : img
-        }
-      />
-      <CardContent>
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {movie.release_date}
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className="movie"
+    >
+      <Card sx={styles.card}>
+        <CardHeader
+          sx={styles.header}
+          avatar={
+            movie.favourite ? (
+              <Avatar sx={styles.avatar}>
+                <FavoriteIcon />
+              </Avatar>
+            ) : movie.mustWatch ? (
+              <Avatar sx={styles.avatar}>
+                <PlaylistAddIcon />
+              </Avatar>
+            ) : null
+          }
+          title={
+            <Typography variant="h5" component="p">
+              {movie.title}{" "}
             </Typography>
+          }
+        />
+        <CardMedia
+          sx={styles.media}
+          image={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              : img
+          }
+        />
+        <CardContent>
+          <Grid container>
+            <Grid item xs={6}>
+              <Typography variant="h6" component="p">
+                <CalendarIcon fontSize="small" />
+                {movie.release_date}
+              </Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="h6" component="p">
+                <StarRateIcon fontSize="small" />
+                {"  "} {movie.vote_average}{" "}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
-            </Typography>
-          </Grid>
-        </Grid>
-      </CardContent>
-      <CardActions disableSpacing>
-        {action(movie)}
-        <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
-            More Info ...
-          </Button>
-        </Link>
-      </CardActions>
-    </Card>
+        </CardContent>
+        <CardActions disableSpacing>
+          {action(movie)}
+          <Link to={`/movies/${movie.id}`}>
+            <Button variant="outlined" size="medium" color="primary">
+              More Info ...
+            </Button>
+          </Link>
+        </CardActions>
+      </Card>
+    </div>
   );
 }
