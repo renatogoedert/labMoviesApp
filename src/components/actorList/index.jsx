@@ -1,5 +1,5 @@
 import React from "react";
-import Actor from "../actorFavouriteCard";
+import Actor from "../actorCard";
 import Grid from "@mui/material/Grid";
 
 

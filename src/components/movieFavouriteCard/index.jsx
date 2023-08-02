@@ -39,8 +39,21 @@ export default function MovieCard({ movie, action }) {
   } else {
     movie.mustWatch = false;
   }
+  const { attributes, listeners, setNodeRef, transform, transition } =
+  useSortable({ id: movie.id });
+const style = {
+  transition,
+  transform: CSS.Transform.toString(transform),
+};
 
   return (
+    <div
+    ref={setNodeRef}
+    style={style}
+    {...attributes}
+    {...listeners}
+    className="movie"
+  >
     <Card sx={styles.card}>
       <CardHeader
         sx={styles.header}
@@ -94,5 +107,6 @@ export default function MovieCard({ movie, action }) {
         </Link>
       </CardActions>
     </Card>
+    </div>
   );
 }
