@@ -29,7 +29,6 @@ const FavouriteActorsPage = (props) => {
 
   const actors = favouriteActorQueries.map((q) => q.data);
   
-  console.log(actors)
   return (
     <PageTemplate
     title="Favourite Actors"

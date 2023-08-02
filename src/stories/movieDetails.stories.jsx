@@ -1,6 +1,7 @@
 import React from "react";
 import MovieDetails from "../components/movieDetails";
 import SampleMovie from "./sampleData";
+import SampleCredits from "./sampleCreditData";
 import { MemoryRouter } from "react-router";
 import MoviesContextProvider from "../contexts/moviesContext";
 
@@ -13,6 +14,6 @@ export default {
   ],
 };
 
-export const Basic = () => <MovieDetails movie={SampleMovie} />;
+export const Basic = () => <MovieDetails movie={SampleMovie} movieCredits={SampleCredits} />;
 
 Basic.storyName = "Default";
