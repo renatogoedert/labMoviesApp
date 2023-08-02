@@ -8,6 +8,19 @@ const MoviesContextProvider = (props) => {
     let list = [];
     const fetch = async () => {
       const { data, error } = await supabase
+        .from("favouriteMovies")
+        .select("id");
+      data.map((d) => list.push(d.id));
+      return list;
+    };
+    setFavourites(list);
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    let list = [];
+    const fetch = async () => {
+      const { data, error } = await supabase
         .from("favouriteActors")
         .select("id");
       data.map((d) => list.push(d.id));
@@ -16,20 +29,6 @@ const MoviesContextProvider = (props) => {
     setFavouritesActors(list);
     fetch();
   }, []);
-
-  useEffect(() => {
-    let list = [];
-    const fetch = async () => {
-      const { data, error } = await supabase
-        .from("favouriteMovies")
-        .select("id");
-      data.map((d) => list.push(d.id));
-      return list;
-    };
-    setFavouritesActors(list);
-    fetch();
-  }, []);
-
 
   const [favourites, setFavourites] = useState([]);
   const [myReviews, setMyReviews] = useState({});
@@ -43,10 +42,9 @@ const MoviesContextProvider = (props) => {
       const { data, error } = await supabase
         .from("favouriteMovies")
         .insert([{ id: movie.id }]);
-      setFavouritesActors(updatedFavourites);
       setFavourites(updatedFavourites);
     } else {
-      setFavouritesActors(favourites.filter((aId) => aId !== actor.id));
+      setFavourites(favourites.filter((aId) => aId !== movie.id));
       const { error } = await supabase
         .from("favouriteMovies")
         .delete()
