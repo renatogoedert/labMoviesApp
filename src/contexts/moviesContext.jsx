@@ -19,7 +19,7 @@ const MoviesContextProvider = (props) => {
       setFavouritesActors(updatedFavourites);
       setFavourites(updatedFavourites);
     } else {
-      setFavouritesActors(favouritesActors.filter((aId) => aId !== actor.id));
+      setFavouritesActors(favourites.filter((aId) => aId !== actor.id));
       const { error } = await supabase
         .from("favouriteMovies")
         .delete()
