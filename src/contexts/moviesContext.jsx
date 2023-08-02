@@ -4,6 +4,33 @@ import { supabase } from "../api/supabase";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
+  useEffect(() => {
+    let list = [];
+    const fetch = async () => {
+      const { data, error } = await supabase
+        .from("favouriteActors")
+        .select("id");
+      data.map((d) => list.push(d.id));
+      return list;
+    };
+    setFavouritesActors(list);
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    let list = [];
+    const fetch = async () => {
+      const { data, error } = await supabase
+        .from("favouriteMovies")
+        .select("id");
+      data.map((d) => list.push(d.id));
+      return list;
+    };
+    setFavouritesActors(list);
+    fetch();
+  }, []);
+
+
   const [favourites, setFavourites] = useState([]);
   const [myReviews, setMyReviews] = useState({});
   const [mustWatch, setMustWatch] = useState([]);
@@ -43,19 +70,6 @@ const MoviesContextProvider = (props) => {
   const addReview = (movie, review) => {
     setMyReviews({ ...myReviews, [movie.id]: review });
   };
-
-  useEffect(() => {
-    let list = [];
-    const fetch = async () => {
-      const { data, error } = await supabase
-        .from("favouriteActors")
-        .select("id");
-      data.map((d) => list.push(d.id));
-      return list;
-    };
-    setFavouritesActors(list);
-    fetch();
-  }, []);
 
   const addToFavouritesActors = async (actor) => {
     let updatedFavourites = [...favouritesActors];
