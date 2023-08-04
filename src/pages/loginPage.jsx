@@ -34,11 +34,7 @@ const Login = ({setToken}) => {
       if (error) throw error
       console.log(data)
       setToken(data)
-      navigate('/homepage')
-
-
-    //   alert('Check your email for verification link')
-
+      navigate('/')
       
     } catch (error) {
       alert(error)

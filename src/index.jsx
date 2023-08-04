@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes, Link } from "react-router-dom";
 import HomePage from "./pages/homePage";
@@ -35,6 +35,20 @@ const queryClient = new QueryClient({
 
 const App = () => {
   const refresh = () => window.location.reload(true);
+
+  const [token, setToken] = useState(false)
+
+  if(token){
+    sessionStorage.setItem('token',JSON.stringify(token))
+  }
+
+  useEffect(() => {
+    if(sessionStorage.getItem('token')){
+      let data = JSON.parse(sessionStorage.getItem('token'))
+      setToken(data)
+    }
+    
+  }, [])
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -75,7 +89,7 @@ const App = () => {
                     <AuthenticationGuard component={FavouriteActorsPage} />
                   }
                 />
-                <Route path="/login" element={<LoginPage />} />
+                <Route path="/login" element={<LoginPage setToken={setToken} />} />
               </Routes>
             </MoviesContextProvider>
           </Auth0ProviderWithNavigate>
