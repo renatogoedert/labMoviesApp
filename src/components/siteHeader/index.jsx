@@ -27,6 +27,11 @@ const SiteHeader = ({token}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
+  function handleLogout(){
+    sessionStorage.removeItem('token')
+    navigate('/')
+  }
+
   const menuOptions = token?[
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favourites" },
@@ -98,6 +103,7 @@ const SiteHeader = ({token}) => {
                     {opt.label}
                   </MenuItem>
                 ))}
+                <button onClick={handleLogout}>Logout</button>
               </Menu>
             </>
           ) : (
@@ -111,6 +117,7 @@ const SiteHeader = ({token}) => {
                   {opt.label}
                 </Button>
               ))}
+              <button onClick={handleLogout}>Logout</button>
             </>
           )}
         </Toolbar>
