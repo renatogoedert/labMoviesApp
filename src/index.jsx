@@ -9,6 +9,7 @@ import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import FantasyMovie from "./pages/fantasyMovie";
 import ActorsPage from "./pages/actorsPage";
+import LoginPage from "./pages/loginPage";
 import ActorsDetailsPage from "./pages/actorDetailsPage";
 import FavouriteActorsPage from "./pages/favouriteActorsPage";
 import SiteHeader from "./components/siteHeader";
@@ -74,6 +75,7 @@ const App = () => {
                     <AuthenticationGuard component={FavouriteActorsPage} />
                   }
                 />
+                <Route path="/login" element={<LoginPage />} />
               </Routes>
             </MoviesContextProvider>
           </Auth0ProviderWithNavigate>

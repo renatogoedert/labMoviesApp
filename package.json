@@ -28,7 +28,8 @@
     "react-number-format": "^5.2.2",
     "react-query": "^3.13.0",
     "react-router-dom": "6.3.0",
-    "react-supabase": "^0.2.0"
+    "react-supabase": "^0.2.0",
+    "rsuite": "^5.37.3"
   },
   "scripts": {
     "storybook": "cross-env storybook dev -p 6006 -s public",
