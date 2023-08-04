@@ -20,20 +20,26 @@ const styles = {
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
-const SiteHeader = () => {
+const SiteHeader = ({token}) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
-  const menuOptions = [
+  const menuOptions = token?[
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favourites" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Top Rated", path: "/movies/toprated" },
     { label: "Actors", path: "/actors" },
     { label: "Fav Actors", path: "/actors/favourites" },
+    { label: "Fantasy Movie", path: "/fantasymovie" },
+  ]:[
+    { label: "Home", path: "/" },
+    { label: "Upcoming", path: "/movies/upcoming" },
+    { label: "Top Rated", path: "/movies/toprated" },
+    { label: "Actors", path: "/actors" },
     { label: "Fantasy Movie", path: "/fantasymovie" },
   ];
 
@@ -95,7 +101,7 @@ const SiteHeader = () => {
               </Menu>
             </>
           ) : (
-            <>
+            <> 
               {menuOptions.map((opt) => (
                 <Button
                   key={opt.label}
