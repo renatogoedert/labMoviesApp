@@ -4,13 +4,22 @@ import PageTemplate from "../components/templateMoviePage";
 import FantasyMovieForm from "../components/fantasyMovieForm";
 import dayjs from "dayjs";
 import FantasyMovieCast from "../components/fantasyMovieCast";
-import Stack from '@mui/material/Stack';
+import {
+  Stack,
+  Popper,
+  Popover,
+  Typography,
+  FormGroup,
+  Button,
+  Paper,
+  Pagination,
+} from "@mui/material";
 
 const FantasyMovie = () => {
   const [genre, setGenre] = useState([]);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [movie, setMovie] = useState({
-    genres: [
-    ],
+    genres: [],
     id: 181808,
     original_language: "en",
     overview:
@@ -33,11 +42,9 @@ const FantasyMovie = () => {
       const {
         target: { value },
       } = e;
-      setGenre(
-         typeof value === 'string' ? value.split(',') : value,
-      )
+      setGenre(typeof value === "string" ? value.split(",") : value);
       let genreArray = value.map((value) => ({
-        name: value
+        name: value,
       }));
       setMovie((prevMovie) => ({
         ...prevMovie,
@@ -67,29 +74,59 @@ const FantasyMovie = () => {
         character: "",
         display: true,
       },
-   ] })
+    ],
+  });
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   return (
     <>
       {movie ? (
         <>
           <PageTemplate movie={movie}>
-            <MovieDetails movie={movie} movieCredits={movieCredits}/>
+            <MovieDetails movie={movie} movieCredits={movieCredits} />
 
-
-            <Stack direction="row" spacing={2} sx={{ marginTop: '30px' }}>
-            <FantasyMovieForm
-              handleDateChange={handleDateChange}
-              handleChange={handleChange}
-              genre={genre}
-            />
-            <FantasyMovieCast
-              movieCredits={movieCredits}
-              setMovieCredits={setMovieCredits}
-            />
-             </Stack>
-
-
+            <Stack direction="row" spacing={2} sx={{ marginTop: "30px" }}>
+              <FantasyMovieForm
+                handleDateChange={handleDateChange}
+                handleChange={handleChange}
+                genre={genre}
+              />
+              <Button
+                aria-describedby={id}
+                variant="contained"
+                onClick={handleClick}
+                sx={{ height: "10ch", width: "25ch" }}
+              >
+                Add Cast
+              </Button>
+              <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+              >
+                <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">
+                  <FantasyMovieCast
+                    movieCredits={movieCredits}
+                    setMovieCredits={setMovieCredits}
+                  />
+                </Stack>
+              </Popover>
+            </Stack>
           </PageTemplate>
         </>
       ) : (

@@ -10,18 +10,19 @@ import {
   FormGroup,
   Button,
   Paper,
-  Pagination
+  Pagination,
+  Box
 } from "@mui/material";
 
 const styles = {
-    root: {
-      display: "flex",
-      justifyContent: "space-around",
-      alignItems: "right",
-      flexWrap: "wrap",
-      marginBottom: 1.5,
-    },
-  };
+  root: {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "right",
+    flexWrap: "wrap",
+    marginBottom: 1.5,
+  },
+};
 
 const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
   const [cast, setCast] = useState([]);
@@ -64,7 +65,7 @@ const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
   };
 
   return (
-    <>
+    <Box sx={{ border: 1, p: 1, bgcolor: "background.paper" }}>
       <Paper component="div" sx={styles.root}>
         <Pagination
           size="large"
@@ -104,14 +105,12 @@ const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
                   ])
                 }
               />
-              <Button type="submit">
-                Submit
-              </Button>
+              <Button type="submit">Submit</Button>
             </FormGroup>
           </form>
         ))}
       </Stack>
-    </>
+    </Box>
   );
 };
 

@@ -100,6 +100,7 @@ const FantasyMovieForm = ({ genre, handleChange, handleDateChange }) => {
   return (
     <Box
       component="form"
+      direction="Column"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
       }}
