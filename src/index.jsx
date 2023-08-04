@@ -18,10 +18,8 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import AddMovieReviewPage from "./pages/addMovieReviewPage";
-import { Auth0ProviderWithNavigate } from "./components/auth-provider";
-import { AuthenticationGuard } from "./components/auth-guard";
 import { Provider as SupabaseProvider } from "react-supabase";
-import { supabase } from './api/supabase';
+import { supabase } from "./api/supabase";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,38 +31,33 @@ const queryClient = new QueryClient({
   },
 });
 
-
 const App = () => {
   const refresh = () => window.location.reload(true);
 
-  const [token, setToken] = useState(false)
+  const [token, setToken] = useState(false);
 
-  if(token){
-    sessionStorage.setItem('token',JSON.stringify(token))
+  if (token) {
+    sessionStorage.setItem("token", JSON.stringify(token));
   }
 
   useEffect(() => {
-    if(sessionStorage.getItem('token')){
-      let data = JSON.parse(sessionStorage.getItem('token'))
-      setToken(data)
+    if (sessionStorage.getItem("token")) {
+      let data = JSON.parse(sessionStorage.getItem("token"));
+      setToken(data);
     }
-    
-  }, [])
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SupabaseProvider value={supabase}>
-          <Auth0ProviderWithNavigate>
             <SiteHeader />
             <MoviesContextProvider>
               <Routes>
                 <Route path="/reviews/form" element={<AddMovieReviewPage />} />
                 <Route
                   path="/movies/favourites"
-                  element={
-                    <AuthenticationGuard component={FavouriteMoviesPage} />
-                  }
+                  element={<FavouriteMoviesPage />}
                 />
                 <Route path="/movies/:id" element={<MoviePage />} />
                 <Route path="/" element={<HomePage />} />
@@ -78,23 +71,20 @@ const App = () => {
                   path="/movies/toprated"
                   element={<TopRatedMoviesPage />}
                 />
-                <Route
-                  path="/fantasymovie"
-                  element={<AuthenticationGuard component={FantasyMovie} />}
-                />
+                <Route path="/fantasymovie" element={<FantasyMovie />} />
                 <Route path="/actors" element={<ActorsPage />} />
                 <Route path="/actors/:id" element={<ActorsDetailsPage />} />
                 <Route
                   path="/actors/favourites"
-                  element={
-                    <AuthenticationGuard component={FavouriteActorsPage} />
-                  }
+                  element={<FavouriteActorsPage />}
                 />
-                <Route path="/login" element={<LoginPage setToken={setToken} />} />
-                <Route path={'/signup'} element={ <SignupPage />} />
+                <Route
+                  path="/login"
+                  element={<LoginPage setToken={setToken} />}
+                />
+                <Route path={"/signup"} element={<SignupPage />} />
               </Routes>
             </MoviesContextProvider>
-          </Auth0ProviderWithNavigate>
         </SupabaseProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
