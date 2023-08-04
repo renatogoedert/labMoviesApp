@@ -27,11 +27,6 @@ const SiteHeader = ({token}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
-  function handleLogout(){
-    sessionStorage.removeItem('token')
-    navigate('/')
-  }
-
   const menuOptions = token?[
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favourites" },
@@ -56,7 +51,15 @@ const SiteHeader = ({token}) => {
     setAnchorEl(event.currentTarget);
   };
 
+  function handleLogout(){
+    sessionStorage.removeItem('token')
+    navigate('/')
+    location.reload()
+  }
   
+  function handleLoginCLick(){
+    navigate('/login')
+  }
 
   return (
     <>
@@ -103,7 +106,7 @@ const SiteHeader = ({token}) => {
                     {opt.label}
                   </MenuItem>
                 ))}
-                <button onClick={handleLogout}>Logout</button>
+                {token?<button onClick={handleLogout}>Logout</button>:<button onClick={handleLoginCLick}>Login</button>}
               </Menu>
             </>
           ) : (
@@ -117,7 +120,7 @@ const SiteHeader = ({token}) => {
                   {opt.label}
                 </Button>
               ))}
-              <button onClick={handleLogout}>Logout</button>
+              {token?<button onClick={handleLogout}>Logout</button>:<button onClick={handleLoginCLick}>Login</button>}
             </>
           )}
         </Toolbar>
