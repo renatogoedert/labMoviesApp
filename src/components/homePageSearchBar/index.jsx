@@ -25,10 +25,12 @@ const styles = {
   item: { m: 1 },
 };
 
-const HomePageSearchBar = ({ setSortBy, setYear, setIsAdult }) => {
+const HomePageSearchBar = ({ setSortBy, setYear, setIsAdult, setVoteCount, setVoteAverage }) => {
   const [formData, setFormData] = useState({
     year: 2023,
     sortBy: "popularity.desc",
+    voteCount: 0,
+    voteAverage: 0,
   });
   const [button, setButton] = useState(false);
 
@@ -42,6 +44,8 @@ const HomePageSearchBar = ({ setSortBy, setYear, setIsAdult }) => {
     setYear(formData.year);
     setSortBy(formData.sortBy);
     setIsAdult(button);
+    setVoteCount(formData.voteCount);
+    setVoteAverage(formData.voteAverage);
   };
 
   return (
@@ -67,6 +71,33 @@ const HomePageSearchBar = ({ setSortBy, setYear, setIsAdult }) => {
                 {option}
               </MenuItem>
             ))}
+        </TextField>
+
+        <TextField
+          sx={styles.item}
+          label="vote"
+          type="voteCount"
+          id="voteCount"
+          name="voteCount"
+          value={formData.voteCount}
+          onChange={handleChange}
+          inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+        ></TextField>
+
+        <TextField
+          select
+          label="voteAverage"
+          type="voteAverage"
+          id="voteAverage"
+          name="voteAverage"
+          defaultValue={formData.voteAverage}
+          onChange={handleChange}
+        >
+          {[...Array(11).keys()].map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
         </TextField>
 
         <TextField

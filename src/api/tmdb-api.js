@@ -1,11 +1,13 @@
 export const getMovies = (args) => {
-  const [, pagePart, sortPart, yearPart, isAdultPart] = args.queryKey;
+  const [, pagePart, sortPart, yearPart, isAdultPart, voteCountPart, voteAveragePart] = args.queryKey;
   const { currentPage } = pagePart;
   const { sortBy } = sortPart;
   const { year } = yearPart;
   const { isAdult } = isAdultPart;
+  const { voteCount } = voteCountPart;
+  const { voteAverage } = voteAveragePart;
   return fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=${isAdult}&include_video=false&sort_by=${sortBy}&primary_release_year=${year}&page=${currentPage}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=${isAdult}&include_video=false&sort_by=${sortBy}&primary_release_year=${year}&vote_count.gte=${voteCount}&vote_average.gte=${voteAverage}&page=${currentPage}`
   ).then((response) => {
     if (!response.ok) {
       console.log(response)

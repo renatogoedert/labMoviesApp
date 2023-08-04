@@ -10,6 +10,8 @@ const HomePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState(`popularity.desc`);
   const [year, setYear] = useState(2023);
+  const [voteCount, setVoteCount] = useState(0);
+  const [voteAverage, setVoteAverage] = useState(0);
   const [isAdult, setIsAdult] = useState(false);
   const { data, error, isLoading, isError } = useQuery(
     [
@@ -18,6 +20,8 @@ const HomePage = (props) => {
       { sortBy: sortBy },
       { year: year },
       { isAdult: isAdult },
+      { voteCount: voteCount },
+      { voteAverage: voteAverage }
     ],
     getMovies
   );
@@ -44,6 +48,8 @@ const HomePage = (props) => {
         setYear={setYear}
         isAdult={isAdult}
         setIsAdult={setIsAdult}
+        setVoteCount={setVoteCount}
+        setVoteAverage={setVoteAverage}
       />
       <PageTemplate
         title="Discover Movies"
