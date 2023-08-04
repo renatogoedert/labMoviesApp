@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-function MovieListPageTemplate({ movies, title, action, vote_average, setCurrentPage, currentPage }) {
+function MovieListPageTemplate({ movies, title, action, vote_average, setCurrentPage, currentPage, token }) {
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [ratingFilter, setRatingFilter] = useState("0");
@@ -55,7 +55,7 @@ function MovieListPageTemplate({ movies, title, action, vote_average, setCurrent
           />
         </Grid>
         <Grid item container spacing={5}>
-        <MovieList action={action} movies={displayedMovies} />
+        <MovieList action={action} movies={displayedMovies} token={token} />
         </Grid>
       </Grid>
       <Fab

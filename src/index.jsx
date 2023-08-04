@@ -60,7 +60,7 @@ const App = () => {
                   element={<FavouriteMoviesPage />}
                 />}
                 <Route path="/movies/:id" element={<MoviePage />} />
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<HomePage token={token}/>} />
                 <Route path="*" element={<Navigate to="/" />} />
                 <Route path="/reviews/:id" element={<MovieReviewPage />} />
                 <Route
@@ -72,7 +72,7 @@ const App = () => {
                   element={<TopRatedMoviesPage />}
                 />
                 <Route path="/fantasymovie" element={<FantasyMovie />} />
-                <Route path="/actors" element={<ActorsPage />} />
+                <Route path="/actors" element={<ActorsPage token={token}/>} />
                 <Route path="/actors/:id" element={<ActorsDetailsPage />} />
                 <Route
                   path="/actors/favourites"

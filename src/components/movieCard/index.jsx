@@ -32,7 +32,7 @@ const styles = {
   },
 };
 
-export default function MovieCard({ movie, action }) {
+export default function MovieCard({ movie, action, token }) {
   const { favourites, addToFavourites } = useContext(MoviesContext);
   const { mustWatch, addToMustWatch } = useContext(MoviesContext);
 
@@ -61,6 +61,7 @@ export default function MovieCard({ movie, action }) {
       {...attributes}
       {...listeners}
       className="movie"
+      token={token}
     >
       <Card sx={styles.card}>
         <CardHeader
@@ -107,7 +108,9 @@ export default function MovieCard({ movie, action }) {
           </Grid>
         </CardContent>
         <CardActions disableSpacing>
+          {token&&<>
           {action(movie)}
+          </>}
           <Link to={`/movies/${movie.id}`}>
             <Button variant="outlined" size="medium" color="primary">
               More Info ...

@@ -50,6 +50,7 @@ const HomePage = (props) => {
         setCurrentPage={handlePageChange}
         currentPage={currentPage}
         movies={movies}
+        token={props.token}
         action={(movie) => {
           return <AddToFavouritesIcon movie={movie} />;
         }}
