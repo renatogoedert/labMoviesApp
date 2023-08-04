@@ -30,6 +30,7 @@ const ActorPage = (props) => {
       title="Discover Actors"
       setCurrentPage={handlePageChange}
       currentPage={currentPage}
+      token={props.token}
       actors={actors}
        action={(actor) => {
          return <AddToFavouritesIconActor actor={actor} />

@@ -33,7 +33,7 @@ const styles = {
   },
 };
 
-export default function ActorCard({ actor, action }) {
+export default function ActorCard({ actor, action, token }) {
   const { favouritesActors, addToFavouritesActors } = useContext(MoviesContext);
   // const { mustWatch, addToMustWatch } = useContext(MoviesContext);
 
@@ -107,7 +107,7 @@ export default function ActorCard({ actor, action }) {
           </Grid>
         </CardContent>
         <CardActions disableSpacing>
-          {action(actor)}
+          {token && <>{action(actor)}</>}
           <Link to={`${actor.id}`}>
             <Button variant="outlined" size="medium" color="primary">
               More Info ...

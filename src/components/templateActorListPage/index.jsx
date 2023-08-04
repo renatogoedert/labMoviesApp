@@ -32,7 +32,8 @@ function ActorListPageTemplate({
   name,
   action,
   setCurrentPage,
-  currentPage
+  currentPage,
+  token
 }) {
   // const [titleFilter, setTitleFilter] = useState("");
   // const [genreFilter, setGenreFilter] = useState("0");
@@ -64,7 +65,7 @@ function ActorListPageTemplate({
         />
         <Grid item container spacing={5}>
 
-              <ActorList action={action} actors={actors} />
+              <ActorList action={action} actors={actors} token={token}/>
 
         </Grid>
       </Grid>
