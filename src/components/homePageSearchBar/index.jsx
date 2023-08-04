@@ -26,20 +26,19 @@ const styles = {
 };
 
 const HomePageSearchBar = ({ setSortBy, setYear, setIsAdult }) => {
-  const [formData, setFormData] = useState({year:2023, sortBy: "popularity.desc"});
-  const [ button, setButton ] = useState(false)
+  const [formData, setFormData] = useState({
+    year: 2023,
+    sortBy: "popularity.desc",
+  });
+  const [button, setButton] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(button);
-
     setYear(formData.year);
     setSortBy(formData.sortBy);
     setIsAdult(button);
@@ -80,36 +79,39 @@ const HomePageSearchBar = ({ setSortBy, setYear, setIsAdult }) => {
           value={formData.sortBy}
           onChange={handleChange}
         >
-                <MenuItem key={"Popularity Asc"} value={"popularity.asc"}>
-          Popularity Asc
-        </MenuItem>
-        <MenuItem key={"Popularity Desc"} value={"popularity.desc"}>
-          Popularity Desc
-        </MenuItem>
-        <MenuItem key={"Revenue Asc"} value={"revenue.asc"}>
-          Revenue Asc
-        </MenuItem>
-        <MenuItem key={"Revenue Desc"} value={"revenue.desc"}>
-          Revenue Desc
-        </MenuItem>
-        <MenuItem key={"Release Date Asc"} value={"primary_release_date.asc"}>
-          Release Date Asc
-        </MenuItem>
-        <MenuItem key={"Release Date Desc"} value={"primary_release_date.desc"}>
-          Release Date Desc
-        </MenuItem>
-        <MenuItem key={"Vote Average Asc"} value={"vote_average.asc"}>
-          Vote Average Asc
-        </MenuItem>
-        <MenuItem key={"Vote Average Desc"} value={"vote_average.desc"}>
-          Vote Average Desc
-        </MenuItem>
-        <MenuItem key={"Vote Count Asc"} value={"vote_count.asc"}>
-          Vote Count Asc
-        </MenuItem>
-        <MenuItem key={"Vote Count Desc"} value={"vote_count.desc"}>
-          Vote Count Desc
-        </MenuItem>
+          <MenuItem key={"Popularity Asc"} value={"popularity.asc"}>
+            Popularity Asc
+          </MenuItem>
+          <MenuItem key={"Popularity Desc"} value={"popularity.desc"}>
+            Popularity Desc
+          </MenuItem>
+          <MenuItem key={"Revenue Asc"} value={"revenue.asc"}>
+            Revenue Asc
+          </MenuItem>
+          <MenuItem key={"Revenue Desc"} value={"revenue.desc"}>
+            Revenue Desc
+          </MenuItem>
+          <MenuItem key={"Release Date Asc"} value={"primary_release_date.asc"}>
+            Release Date Asc
+          </MenuItem>
+          <MenuItem
+            key={"Release Date Desc"}
+            value={"primary_release_date.desc"}
+          >
+            Release Date Desc
+          </MenuItem>
+          <MenuItem key={"Vote Average Asc"} value={"vote_average.asc"}>
+            Vote Average Asc
+          </MenuItem>
+          <MenuItem key={"Vote Average Desc"} value={"vote_average.desc"}>
+            Vote Average Desc
+          </MenuItem>
+          <MenuItem key={"Vote Count Asc"} value={"vote_count.asc"}>
+            Vote Count Asc
+          </MenuItem>
+          <MenuItem key={"Vote Count Desc"} value={"vote_count.desc"}>
+            Vote Count Desc
+          </MenuItem>
         </TextField>
 
         <FormControlLabel
