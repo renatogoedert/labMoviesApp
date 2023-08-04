@@ -11,6 +11,8 @@ import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import Fab from "@mui/material/Fab";
+
 
 
 const styles = {
@@ -21,28 +23,30 @@ const styles = {
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
-const SiteHeader = ({token}) => {
+const SiteHeader = ({ token }) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
-  const menuOptions = token?[
-    { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favourites" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Top Rated", path: "/movies/toprated" },
-    { label: "Actors", path: "/actors" },
-    { label: "Fav Actors", path: "/actors/favourites" },
-    { label: "Fantasy Movie", path: "/fantasymovie" },
-  ]:[
-    { label: "Home", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Top Rated", path: "/movies/toprated" },
-    { label: "Actors", path: "/actors" },
-    { label: "Fantasy Movie", path: "/fantasymovie" },
-  ];
+  const menuOptions = token
+    ? [
+        { label: "Home", path: "/" },
+        { label: "Favorites", path: "/movies/favourites" },
+        { label: "Upcoming", path: "/movies/upcoming" },
+        { label: "Top Rated", path: "/movies/toprated" },
+        { label: "Actors", path: "/actors" },
+        { label: "Fav Actors", path: "/actors/favourites" },
+        { label: "Fantasy Movie", path: "/fantasymovie" },
+      ]
+    : [
+        { label: "Home", path: "/" },
+        { label: "Upcoming", path: "/movies/upcoming" },
+        { label: "Top Rated", path: "/movies/toprated" },
+        { label: "Actors", path: "/actors" },
+        { label: "Fantasy Movie", path: "/fantasymovie" },
+      ];
 
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL);
@@ -52,14 +56,14 @@ const SiteHeader = ({token}) => {
     setAnchorEl(event.currentTarget);
   };
 
-  function handleLogout(){
-    sessionStorage.removeItem('token')
-    navigate('/')
-    location.reload()
+  function handleLogout() {
+    sessionStorage.removeItem("token");
+    navigate("/");
+    location.reload();
   }
-  
-  function handleLoginCLick(){
-    navigate('/login')
+
+  function handleLoginCLick() {
+    navigate("/login");
   }
 
   return (
@@ -107,11 +111,27 @@ const SiteHeader = ({token}) => {
                     {opt.label}
                   </MenuItem>
                 ))}
-                {token?<Button  onClick={handleLogout}>Logout</Button >:<Button variant="contained" disableElevation color="secondary"  onClick={handleLoginCLick}>Login</Button >}
+              {token ? (
+                <Fab
+                  color="error"
+                  variant="extended"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Fab>
+              ) : (
+                <Fab
+                  variant="extended"
+                  color="info"
+                  onClick={handleLoginCLick}
+                >
+                  Login
+                </Fab>
+              )}
               </Menu>
             </>
           ) : (
-            <> 
+            <>
               {menuOptions.map((opt) => (
                 <Button
                   key={opt.label}
@@ -121,7 +141,23 @@ const SiteHeader = ({token}) => {
                   {opt.label}
                 </Button>
               ))}
-              {token?<Button variant="contained" disableElevation color="error" onClick={handleLogout}>Logout</Button >:<Button variant="contained" disableElevation color="secondary" onClick={handleLoginCLick}>Login</Button >}
+              {token ? (
+                <Fab
+                  color="error"
+                  variant="extended"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Fab>
+              ) : (
+                <Fab
+                  variant="extended"
+                  color="info"
+                  onClick={handleLoginCLick}
+                >
+                  Login
+                </Fab>
+              )}
             </>
           )}
         </Toolbar>

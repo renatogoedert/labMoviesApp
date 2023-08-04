@@ -44,6 +44,7 @@ function MovieListPageTemplate({ movies, title, action, vote_average, setCurrent
     else setRatingFilter(value);
   };
 
+
   return (
    <>
       <Grid container sx={styles.root}>
