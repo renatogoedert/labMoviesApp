@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+
 const styles = {
   title: {
     flexGrow: 1,
@@ -106,7 +107,7 @@ const SiteHeader = ({token}) => {
                     {opt.label}
                   </MenuItem>
                 ))}
-                {token?<button onClick={handleLogout}>Logout</button>:<button onClick={handleLoginCLick}>Login</button>}
+                {token?<Button  onClick={handleLogout}>Logout</Button >:<Button variant="contained" disableElevation color="secondary"  onClick={handleLoginCLick}>Login</Button >}
               </Menu>
             </>
           ) : (
@@ -120,7 +121,7 @@ const SiteHeader = ({token}) => {
                   {opt.label}
                 </Button>
               ))}
-              {token?<button onClick={handleLogout}>Logout</button>:<button onClick={handleLoginCLick}>Login</button>}
+              {token?<Button variant="contained" disableElevation color="error" onClick={handleLogout}>Logout</Button >:<Button variant="contained" disableElevation color="secondary" onClick={handleLoginCLick}>Login</Button >}
             </>
           )}
         </Toolbar>
