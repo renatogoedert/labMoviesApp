@@ -40,28 +40,6 @@ const MoviesContextProvider = (props) => {
     fetch();
   }, []);
 
-  const getFavourites = async () => {
-    let list = [];
-    const { data, error } = await supabase.from("favouriteMovies").select("id");
-    data.map((d) => list.push(d.id));
-    return list;
-  };
-
-  const getFavouritesActors = async () => {
-    let list = [];
-    const { data, error } = await supabase.from("favouriteActors").select("id");
-    data.map((d) => list.push(d.id));
-    return list;
-  };
-
-  
-  const getPlaylists = async () => {
-    let list = [];
-    const { data, error } = await supabase.from("playlists").select("*");
-    data.map((d) => list.push(d));
-    return list;
-  };
-
   const [favourites, setFavourites] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [myReviews, setMyReviews] = useState({});
@@ -141,7 +119,7 @@ const MoviesContextProvider = (props) => {
         // removeFromFavouritesActors,
         playlists,
         setPlaylists,
-        getPlaylists
+        // getPlaylistsNames,
       }}
     >
       {props.children}
