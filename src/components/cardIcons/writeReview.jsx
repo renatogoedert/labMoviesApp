@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 const WriteReviewIcon = ({ movie }) => {
   return (
     <Link
-      to={'/reviews/form'}
-      state={{
-          movieId: movie.id,
-        }}
+      to={`/reviews/form/${movie.id}`}
     >
       <RateReviewIcon color="primary" fontSize="large" />
     </Link>

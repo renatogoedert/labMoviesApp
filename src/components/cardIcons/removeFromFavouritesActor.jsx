@@ -7,6 +7,7 @@ const RemoveFromFavouritesIconActor = ({ actor }) => {
   const context = useContext(MoviesContext);
 
   async function onUserRequest() {
+    console.log("HHH")
     const { data, error } = await supabase
       .from("favouriteActors")
       .delete()

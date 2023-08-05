@@ -30,11 +30,8 @@ const styles = {
 
 function MovieListPageTemplate({
   movies,
-  title,
   action,
-  vote_average,
-  setCurrentPage,
-  currentPage,
+  token,
 }) {
   // const [titleFilter, setTitleFilter] = useState("");
   // const [genreFilter, setGenreFilter] = useState("0");
@@ -94,7 +91,7 @@ function MovieListPageTemplate({
             strategy={verticalListSortingStrategy}
           > 
             <Grid item container spacing={5}>
-              <MovieList action={action} movies={favMovies} />
+              <MovieList action={action} movies={favMovies} token={token} />
             </Grid>
           </SortableContext> 
          </DndContext>

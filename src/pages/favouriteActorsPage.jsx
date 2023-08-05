@@ -33,6 +33,7 @@ const FavouriteActorsPage = (props) => {
     <PageTemplate
     title="Favourite Actors"
     actors={actors}
+    token={props.token}
     action={(actor) => {
       return (
         <>

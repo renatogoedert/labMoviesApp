@@ -28,7 +28,7 @@ const styles = {
 
 function ActorFavouritesPageTemplate({
   actors,
-  name,
+  token,
   action,
   setCurrentPage,
   currentPage,
@@ -81,7 +81,7 @@ function ActorFavouritesPageTemplate({
             strategy={verticalListSortingStrategy}
           >
             <Grid item container spacing={5}>
-              <ActorList action={action} actors={favActors} />
+              <ActorList action={action} actors={favActors} token={token} />
             </Grid>
           </SortableContext>
         </DndContext>

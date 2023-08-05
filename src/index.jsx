@@ -54,10 +54,10 @@ const App = () => {
             <SiteHeader token={token}/>
             <MoviesContextProvider>
               <Routes>
-                <Route path="/reviews/form" element={<AddMovieReviewPage />} />
+                <Route path="/reviews/form/:id" element={<AddMovieReviewPage />} />
                 {token && <Route
                   path="/movies/favourites"
-                  element={<FavouriteMoviesPage />}
+                  element={<FavouriteMoviesPage token={token}/>}
                 />}
                 <Route path="/movies/:id" element={<MoviePage />} />
                 <Route path="/" element={<HomePage token={token}/>} />
@@ -65,18 +65,18 @@ const App = () => {
                 <Route path="/reviews/:id" element={<MovieReviewPage />} />
                 <Route
                   path="/movies/upcoming"
-                  element={<UpcomingMoviesPage />}
+                  element={<UpcomingMoviesPage token={token}/>}
                 />
                 <Route
                   path="/movies/toprated"
-                  element={<TopRatedMoviesPage />}
+                  element={<TopRatedMoviesPage token={token}/>}
                 />
                 <Route path="/fantasymovie" element={<FantasyMovie />} />
                 <Route path="/actors" element={<ActorsPage token={token}/>} />
                 <Route path="/actors/:id" element={<ActorsDetailsPage />} />
                 <Route
                   path="/actors/favourites"
-                  element={<FavouriteActorsPage />}
+                  element={<FavouriteActorsPage token={token}/>}
                 />
                 <Route
                   path="/login"

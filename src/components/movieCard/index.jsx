@@ -61,7 +61,6 @@ export default function MovieCard({ movie, action, token }) {
       {...attributes}
       {...listeners}
       className="movie"
-      token={token}
     >
       <Card sx={styles.card}>
         <CardHeader

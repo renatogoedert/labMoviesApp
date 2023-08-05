@@ -31,6 +31,7 @@ const UpcomingMoviesPage = (props) => {
       setCurrentPage={handlePageChange}
       currentPage={currentPage}
       movies={upcomingMovies}
+      token={props.token}
       action={(movie) => {
         return <AddToPlaylistIcon movie={movie} />
       }}

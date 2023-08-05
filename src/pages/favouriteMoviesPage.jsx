@@ -6,8 +6,8 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
-import { useRealtime } from 'react-supabase'
-import { supabase } from '../api/supabase';
+import { useRealtime } from "react-supabase";
+import { supabase } from "../api/supabase";
 
 const FavouriteMoviesPage = (props) => {
   const { favourites: movieIds } = useContext(MoviesContext);
@@ -32,18 +32,18 @@ const FavouriteMoviesPage = (props) => {
 
   return (
     <PageTemplate
-    title="Favourite Movies"
-    movies={movies}
-    action={(movie) => {
-      return (
-        <>
-          <RemoveFromFavourites movie={movie} />
-          <WriteReview movie={movie} />
-        </>
-      );
-    }}
-  />
-
+      title="Favourite Movies"
+      movies={movies}
+      token={props.token}
+      action={(movie) => {
+        return (
+          <>
+            <WriteReview movie={movie} />
+            <RemoveFromFavourites movie={movie} />
+          </>
+        );
+      }}
+    />
   );
 };
 
