@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import PageTemplate from "../components/templateMovieFavourites";
+import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getMovie } from "../api/tmdb-api";
@@ -32,39 +32,35 @@ const playlistsPage = (props) => {
   let movieIds = playlists.find((p) => p.name === name).moviesId;
 
   // Create an array of queries and run them in parallel.
-  const favouriteMovieQueries = useQueries(
+  const movieQueries = useQueries(
     movieIds.map((movieId) => {
       return {
-        queryKey: ["movie", { id: movieId }],
+        queryKey: [name, { id: movieId }],
         queryFn: getMovie,
       };
     })
   );
   // Check if any of the parallel queries is still loading.
-  const isLoading = favouriteMovieQueries.find((m) => m.isLoading === true);
+  const isLoading = movieQueries.find((m) => m.isLoading === true);
+
+  
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  const movies = favouriteMovieQueries.map((q) => q.data);
+  let movies = movieQueries.map((q) => q.data);
 
   console.log(movies);
 
   return (
     <><TextField
       select
-      // InputProps={{
-      //   startAdornment: (
-      //     <InputAdornment position="start">
-      //       <StarRate />
-      //     </InputAdornment>
-      //   ),
-      // }}
       label="Playlist"
       type="name"
       id="name"
       name="name"
+      value={name}
       onChange={handleChange}
     >
       {names.map((option) => (
@@ -72,7 +68,8 @@ const playlistsPage = (props) => {
           {option}
         </MenuItem>
       ))}
-    </TextField><PageTemplate
+    </TextField>
+    <PageTemplate
         title="Favourite Movies"
         movies={movies}
         token={props.token}
