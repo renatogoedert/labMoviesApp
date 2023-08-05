@@ -9,6 +9,7 @@ import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import FantasyMovie from "./pages/fantasyMovie";
 import ActorsPage from "./pages/actorsPage";
+import PlaylistPage from "./pages/playlistsPage";
 import LoginPage from "./pages/loginPage";
 import SignupPage from "./pages/SingupPage";
 import ActorsDetailsPage from "./pages/actorDetailsPage";
@@ -78,6 +79,10 @@ const App = () => {
                   path="/actors/favourites"
                   element={<FavouriteActorsPage token={token}/>}
                 />
+                {token && <Route
+                  path="/playlists"
+                  element={<PlaylistPage token={token}/>}
+                />}
                 <Route
                   path="/login"
                   element={<LoginPage setToken={setToken} />}

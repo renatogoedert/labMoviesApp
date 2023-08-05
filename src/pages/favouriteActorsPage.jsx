@@ -4,7 +4,7 @@ import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getActor } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
-import RemoveFromFavouritesIconActor from "../components/cardIcons/removeFromFavouritesActor";
+// import RemoveFromFavouritesIconActor from "../components/cardIcons/removeFromFavouritesActor";
 // import WriteReview from "../components/cardIcons/writeReview";
 
 const FavouriteActorsPage = (props) => {
@@ -37,7 +37,7 @@ const FavouriteActorsPage = (props) => {
     action={(actor) => {
       return (
         <>
-          <RemoveFromFavouritesIconActor actor={actor} />
+          {/* <RemoveFromFavouritesIconActor actor={actor} /> */}
           {/* <WriteReview actor={actor} /> */}
         </>
       );

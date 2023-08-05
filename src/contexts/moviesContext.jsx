@@ -28,6 +28,18 @@ const MoviesContextProvider = (props) => {
     fetch();
   }, []);
 
+  useEffect(() => {
+    let list = [];
+    const fetch = async () => {
+      const { data, error } = await supabase
+        .from("playlists")
+        .select("*");
+      data.map((d) => list.push(d));
+      setPlaylists(list);
+    };
+    fetch();
+  }, []);
+
   const getFavourites = async () => {
     let list = [];
     const { data, error } = await supabase.from("favouriteMovies").select("id");
@@ -42,12 +54,19 @@ const MoviesContextProvider = (props) => {
     return list;
   };
 
+  
+  const getPlaylists = async () => {
+    let list = [];
+    const { data, error } = await supabase.from("playlists").select("*");
+    data.map((d) => list.push(d));
+    return list;
+  };
+
   const [favourites, setFavourites] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
   const [myReviews, setMyReviews] = useState({});
   const [mustWatch, setMustWatch] = useState([]);
   const [favouritesActors, setFavouritesActors] = useState([]);
-
-
 
   const addToFavourites = async (movie) => {
     // let updatedFavourites = [...favourites];
@@ -68,14 +87,14 @@ const MoviesContextProvider = (props) => {
     }
   };
 
-  const removeFromFavourites = async (movie) => {
-    setFavourites(favourites.filter((aId) => aId !== movie.id));
-      const { error } = await supabase
-        .from("favouriteMovies")
-        .delete()
-        .eq("id", movie.id);
-      console.log(error);
-  };
+  // const removeFromFavourites = async (id) => {
+  //   setFavourites(favourites.filter((aId) => aId !== id));
+  //     const { error } = await supabase
+  //       .from("favouriteMovies")
+  //       .delete()
+  //       .eq("id", id);
+  //     console.log(error);
+  // };
 
   const addToMustWatch = (movie) => {
     let updatedMustWatch = [...mustWatch];
@@ -107,27 +126,22 @@ const MoviesContextProvider = (props) => {
     }
   };
 
-  async function removeFromFavouritesActors(actor) {
-    // setFavouritesActors(favouritesActors.filter((aId) => aId !== actor.id));
-    // const { error } = await supabase
-    //   .from("favouriteActors")
-    //   .delete();
-    //   console.log(error)
-    console.log("context.removefrom favourites");
-  }
 
   return (
     <MoviesContext.Provider
       value={{
         favourites,
         addToFavourites,
-        removeFromFavourites,
+        // removeFromFavourites,
         addReview,
         mustWatch,
         addToMustWatch,
         favouritesActors,
         addToFavouritesActors,
-        removeFromFavouritesActors,
+        // removeFromFavouritesActors,
+        playlists,
+        setPlaylists,
+        getPlaylists
       }}
     >
       {props.children}

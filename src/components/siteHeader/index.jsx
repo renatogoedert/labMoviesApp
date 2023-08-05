@@ -39,6 +39,7 @@ const SiteHeader = ({ token }) => {
         { label: "Actors", path: "/actors" },
         { label: "Fav Actors", path: "/actors/favourites" },
         { label: "Fantasy Movie", path: "/fantasymovie" },
+        { label: "Playlists", path: "/playlists" },
       ]
     : [
         { label: "Home", path: "/" },
