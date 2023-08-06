@@ -144,8 +144,8 @@ const MoviesContextProvider = (props) => {
       .from("playlists")
       .select("moviesId")
       .eq("name", [playlistName]);
-    data.map((d) => list = (d.moviesId));
-    if (!list.includes(movieId)) {
+    data.map((d) => (d.moviesId)?list = (d.moviesId):null);
+    if (!list || !list.includes(movieId)) {
       list.push(movieId);;
       const { data, error } = await supabase
         .from("playlists")

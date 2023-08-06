@@ -33,7 +33,7 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const refresh = () => window.location.reload(true);
+  // const refresh = () => window.location.reload(true);
 
   const [token, setToken] = useState(false);
 
@@ -62,7 +62,6 @@ const App = () => {
                 />}
                 <Route path="/movies/:id" element={<MoviePage />} />
                 <Route path="/" element={<HomePage token={token}/>} />
-                <Route path="*" element={<Navigate to="/" />} />
                 <Route path="/reviews/:id" element={<MovieReviewPage />} />
                 <Route
                   path="/movies/upcoming"
@@ -88,6 +87,7 @@ const App = () => {
                   element={<LoginPage setToken={setToken} />}
                 />
                 <Route path={"/signup"} element={<SignupPage />} />
+                <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </MoviesContextProvider>
         </SupabaseProvider>
