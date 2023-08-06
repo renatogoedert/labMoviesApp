@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { closestCenter, DndContext } from "@dnd-kit/core";
+import AddToPlaylistsIcon from "../cardIcons/addToPlaylist";
 import {
   arrayMove,
   SortableContext,
@@ -63,6 +64,7 @@ export default function MovieCard({ movie, action, token }) {
       className="movie"
     >
       <Card sx={styles.card}>
+      <AddToPlaylistsIcon movie={movie} />
         <CardHeader
           sx={styles.header}
           avatar={

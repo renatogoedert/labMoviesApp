@@ -31,9 +31,7 @@ const MoviesContextProvider = (props) => {
   useEffect(() => {
     let list = [];
     const fetch = async () => {
-      const { data, error } = await supabase
-        .from("playlists")
-        .select("*");
+      const { data, error } = await supabase.from("playlists").select("*");
       data.map((d) => list.push(d));
       setPlaylists(list);
     };
@@ -67,7 +65,7 @@ const MoviesContextProvider = (props) => {
       const { data, error } = await supabase
         .from("favouriteMovies")
         .insert([{ id: movie.id }]);
-        console.log(getFavourites())
+      console.log(getFavourites());
       setFavourites(await getFavourites());
     } else {
       setFavourites(favourites.filter((aId) => aId !== movie.id));
@@ -120,13 +118,11 @@ const MoviesContextProvider = (props) => {
 
   const addToPlaylists = async (form) => {
     let haveTrue = false;
-    playlists.flatMap((p) => p.name.includes(form.name)?haveTrue=true:null)
-    console.log(haveTrue)
-    if (!haveTrue)
-     {
-      console.log(playlists)
-      console.log(form.name)
-      // updatedFavourites.push(movie.id);
+    playlists.flatMap((p) =>
+      p.name.includes(form.name) ? (haveTrue = true) : null
+    );
+    console.log(haveTrue);
+    if (!haveTrue) {
       const { data, error } = await supabase
         .from("playlists")
         .insert([{ name: form.name, theme: form.theme }]);
@@ -135,6 +131,29 @@ const MoviesContextProvider = (props) => {
     }
   };
 
+  const addMovieToPlaylist = async (movieId) => {
+    const playlistName = "test";
+    let list = [];
+    const { data, error } = await supabase
+      .from("playlists")
+      .select("moviesId")
+      .eq("name", [playlistName]);
+      console.log(list)
+    data.map((d) => list = (d.moviesId));
+    console.log(list)
+    list.push(movieId);
+    console.log(list)
+    if (movieId) {
+      // updatedFavourites.push(movie.id);
+      const { data, error } = await supabase
+        .from("playlists")
+        .update({ moviesId: list })
+        .eq("name", [playlistName])
+        .select();
+    } else {
+      console.log("error");
+    }
+  };
 
   return (
     <MoviesContext.Provider
@@ -152,6 +171,7 @@ const MoviesContextProvider = (props) => {
         setPlaylists,
         // getPlaylistsNames,
         addToPlaylists,
+        addMovieToPlaylist,
       }}
     >
       {props.children}

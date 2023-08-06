@@ -7,6 +7,7 @@ import Drawer from "@mui/material/Drawer";
 import MovieList from "../movieList";
 import { TroubleshootSharp } from "@mui/icons-material";
 
+
 const styles = {
   fab: {
     marginTop: 8,

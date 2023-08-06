@@ -4,11 +4,12 @@ import IconButton from "@mui/material/IconButton";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 
 const AddToPlaylistIcon = ({ movie }) => {
-  const context = useContext(MoviesContext);
+  const { addMovieToPlaylist } = useContext(MoviesContext);
 
   const onUserSelect = (e) => {
     e.preventDefault();
-    context.addToMustWatch(movie);
+    console.log(movie.id);
+    addMovieToPlaylist(movie.id)
   };
   return (
     <IconButton aria-label="add to playlist" onClick={onUserSelect}>
