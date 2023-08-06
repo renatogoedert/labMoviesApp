@@ -35,7 +35,7 @@ function MovieListPageTemplate({
 
   const genreId = Number(genreFilter);
 
-  let displayedMovies = movies?movies
+  let displayedMovies = movies
     .filter((m) => {
       return m.title.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
     })
@@ -44,7 +44,7 @@ function MovieListPageTemplate({
     })
     .filter((m) => {
       return ratingFilter > 0 ? m.vote_average >= ratingFilter : true;
-    }):null;
+    });
 
   const handleChange = (type, value) => {
     if (type === "title") setTitleFilter(value);

@@ -144,9 +144,9 @@ const MoviesContextProvider = (props) => {
       .from("playlists")
       .select("moviesId")
       .eq("name", [playlistName]);
-    data.map((d) => (d.moviesId)?list = (d.moviesId):null);
+    data.map((d) => (d.moviesId ? (list = d.moviesId) : null));
     if (!list || !list.includes(movieId)) {
-      list.push(movieId);;
+      list.push(movieId);
       const { data, error } = await supabase
         .from("playlists")
         .update({ moviesId: list })
@@ -155,6 +155,26 @@ const MoviesContextProvider = (props) => {
     } else {
       console.log("error");
     }
+  };
+
+  // .filter((m) => {
+  //   return m.title.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
+  // })
+  // .f
+
+  const deleteMoviePlaylist = async (movieId, playlistName) => {
+    const { data, error } = await supabase
+      .from("playlists")
+      .select("moviesId")
+      .eq("name", [playlistName]);
+    let list = data[0].moviesId.filter((mId) => {
+      return mId !== movieId;
+    });
+    const {} = await supabase
+      .from("playlists")
+      .update({ moviesId: list })
+      .eq("name", [playlistName])
+      .select();
   };
 
   return (
@@ -173,7 +193,8 @@ const MoviesContextProvider = (props) => {
         setPlaylists,
         addToPlaylists,
         addMovieToPlaylist,
-        getPlaylistsNames
+        getPlaylistsNames,
+        deleteMoviePlaylist,
       }}
     >
       {props.children}

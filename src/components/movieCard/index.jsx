@@ -64,7 +64,7 @@ export default function MovieCard({ movie, action, token }) {
       className="movie"
     >
       <Card sx={styles.card}>
-      <AddToPlaylistsIcon movie={movie} />
+      
         <CardHeader
           sx={styles.header}
           avatar={
@@ -109,6 +109,7 @@ export default function MovieCard({ movie, action, token }) {
           </Grid>
         </CardContent>
         <CardActions disableSpacing>
+        <AddToPlaylistsIcon movie={movie} />
           {token&&<>
           {action(movie)}
           </>}

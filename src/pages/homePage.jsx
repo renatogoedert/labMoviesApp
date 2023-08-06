@@ -5,7 +5,7 @@ import { getMovies, getActors } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
-import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
+// import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 
 const HomePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,6 +40,8 @@ const HomePage = (props) => {
 
   const movies = data ? data.results : [];
 
+
+  
   return (
     <>
       <HomePageSearchBar

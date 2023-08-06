@@ -4,7 +4,7 @@ import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
-import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
+import RemoveFromPlaylistsIcon from "../components/cardIcons/removeFromPlaylists";
 import WriteReview from "../components/cardIcons/writeReview";
 import { useRealtime } from "react-supabase";
 import { supabase } from "../api/supabase";
@@ -132,8 +132,7 @@ const playlistsPage = (props) => {
         action={(movie) => {
           return (
             <>
-              {/* <WriteReview movie={movie} /> */}
-              {/* <RemoveFromFavourites movie={movie} /> */}
+              <RemoveFromPlaylistsIcon movie={movie} name={name} />
             </>
           );
         }}
