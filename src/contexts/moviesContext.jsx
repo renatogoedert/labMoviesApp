@@ -52,6 +52,13 @@ const MoviesContextProvider = (props) => {
     return list;
   };
 
+  const getPlaylistsNames = async () => {
+    let list = [];
+    const { data, error } = await supabase.from("playlists").select("name");
+    data.map((d) => list.push(d.name));
+    return list;
+  };
+
   const [favourites, setFavourites] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [myReviews, setMyReviews] = useState({});
@@ -118,7 +125,7 @@ const MoviesContextProvider = (props) => {
 
   const addToPlaylists = async (form) => {
     let haveTrue = false;
-    playlists.flatMap((p) =>
+    playlists.map((p) =>
       p.name.includes(form.name) ? (haveTrue = true) : null
     );
     console.log(haveTrue);
@@ -131,20 +138,15 @@ const MoviesContextProvider = (props) => {
     }
   };
 
-  const addMovieToPlaylist = async (movieId) => {
-    const playlistName = "test";
+  const addMovieToPlaylist = async (movieId, playlistName) => {
     let list = [];
     const { data, error } = await supabase
       .from("playlists")
       .select("moviesId")
       .eq("name", [playlistName]);
-      console.log(list)
     data.map((d) => list = (d.moviesId));
-    console.log(list)
-    list.push(movieId);
-    console.log(list)
-    if (movieId) {
-      // updatedFavourites.push(movie.id);
+    if (!list.includes(movieId)) {
+      list.push(movieId);;
       const { data, error } = await supabase
         .from("playlists")
         .update({ moviesId: list })
@@ -169,9 +171,9 @@ const MoviesContextProvider = (props) => {
         // removeFromFavouritesActors,
         playlists,
         setPlaylists,
-        // getPlaylistsNames,
         addToPlaylists,
         addMovieToPlaylist,
+        getPlaylistsNames
       }}
     >
       {props.children}
