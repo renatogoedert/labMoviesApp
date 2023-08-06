@@ -55,6 +55,7 @@ const HomePage = (props) => {
       <PageTemplate
         title="Discover Movies"
         setCurrentPage={handlePageChange}
+        isPlaylist={false}
         currentPage={currentPage}
         movies={movies}
         token={props.token}

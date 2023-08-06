@@ -31,6 +31,7 @@ const TopRatedMovies = (props) => {
       setCurrentPage={handlePageChange}
       currentPage={currentPage}
       movies={topRatedMovies}
+      isPlaylist={false}
       token={props.token}
        action={(movie) => {
          return <AddToPlaylistIcon movie={movie} />

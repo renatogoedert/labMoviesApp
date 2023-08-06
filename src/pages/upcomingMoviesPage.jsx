@@ -30,6 +30,7 @@ const UpcomingMoviesPage = (props) => {
       title="New Upcoming Movies"
       setCurrentPage={handlePageChange}
       currentPage={currentPage}
+      isPlaylist={false}
       movies={upcomingMovies}
       token={props.token}
       action={(movie) => {

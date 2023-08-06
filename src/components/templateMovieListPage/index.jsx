@@ -8,9 +8,6 @@ import MovieList from "../movieList";
 import { TroubleshootSharp } from "@mui/icons-material";
 
 const styles = {
-  root: {
-    padding: "20px",
-  },
   fab: {
     marginTop: 8,
     position: "fixed",
@@ -19,7 +16,17 @@ const styles = {
   },
 };
 
-function MovieListPageTemplate({ movies, title, action, vote_average, setCurrentPage, currentPage, token }) {
+function MovieListPageTemplate({
+  movies,
+  title,
+  action,
+  isPlaylist,
+  setCurrentPage,
+  currentPage,
+  token,
+  setName,
+  theme,
+}) {
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [ratingFilter, setRatingFilter] = useState("0");
@@ -27,7 +34,7 @@ function MovieListPageTemplate({ movies, title, action, vote_average, setCurrent
 
   const genreId = Number(genreFilter);
 
-  let displayedMovies = movies
+  let displayedMovies = movies?movies
     .filter((m) => {
       return m.title.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
     })
@@ -35,8 +42,8 @@ function MovieListPageTemplate({ movies, title, action, vote_average, setCurrent
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     })
     .filter((m) => {
-      return ratingFilter > 0 ? m.vote_average >= (ratingFilter) : true;
-    });
+      return ratingFilter > 0 ? m.vote_average >= ratingFilter : true;
+    }):null;
 
   const handleChange = (type, value) => {
     if (type === "title") setTitleFilter(value);
@@ -44,19 +51,20 @@ function MovieListPageTemplate({ movies, title, action, vote_average, setCurrent
     else setRatingFilter(value);
   };
 
-
   return (
-   <>
-      <Grid container sx={styles.root}>
+    <>
+      <Grid container sx={{padding: "20px", backgroundColor: theme}}>
         <Grid item xs={12}>
-          <Header 
-            title={title}
-            currentPage={currentPage} 
-            setCurrentPage={setCurrentPage}
-          />
+          {isPlaylist ? null : (
+            <Header
+              title={title}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          )}
         </Grid>
         <Grid item container spacing={5}>
-        <MovieList action={action} movies={displayedMovies} token={token} />
+          <MovieList action={action} movies={displayedMovies} token={token} />
         </Grid>
       </Grid>
       <Fab
@@ -79,7 +87,7 @@ function MovieListPageTemplate({ movies, title, action, vote_average, setCurrent
           ratingFilter={ratingFilter}
         />
       </Drawer>
-    </>  
+    </>
   );
 }
 export default MovieListPageTemplate;
