@@ -51,7 +51,7 @@ const SiteHeader = ({ token }) => {
 
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL);
-    
+    setAnchorEl(false);
     // window.location.reload();
   };
 
