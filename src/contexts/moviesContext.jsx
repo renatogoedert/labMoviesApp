@@ -52,6 +52,15 @@ const MoviesContextProvider = (props) => {
     return list;
   };
 
+  const getPlaylists = async () => {
+    let list = [];
+    const { data, error } = await supabase
+      .from("playlists")
+      .select("*")
+    data.map((d) => list.push(d));
+    return list;
+  };
+
   const getPlaylistsNames = async () => {
     let list = [];
     const { data, error } = await supabase.from("playlists").select("name");
@@ -155,12 +164,8 @@ const MoviesContextProvider = (props) => {
     } else {
       console.log("error");
     }
+    setPlaylists(await getPlaylists())
   };
-
-  // .filter((m) => {
-  //   return m.title.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
-  // })
-  // .f
 
   const deleteMoviePlaylist = async (movieId, playlistName) => {
     const { data, error } = await supabase
@@ -175,6 +180,7 @@ const MoviesContextProvider = (props) => {
       .update({ moviesId: list })
       .eq("name", [playlistName])
       .select();
+    setPlaylists(await getPlaylists());
   };
 
   return (

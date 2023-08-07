@@ -33,7 +33,7 @@ const styles = {
 
 const playlistsPage = (props) => {
   const [name, setName] = useState("test");
-  const { playlists, addToPlaylists } = useContext(MoviesContext);
+  const { playlists, addToPlaylists, getPlaylistsNames } = useContext(MoviesContext);
   const [formData, setFormData] = useState({
     name: "Playlist Name",
     theme: "coral",
@@ -72,9 +72,10 @@ const playlistsPage = (props) => {
 
   let movies = movieQueries.map((q) => q.data);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     addToPlaylists(formData);
+    names = await getPlaylistsNames()
   };
 
   // const theme = "blue"

@@ -7,7 +7,7 @@ import {
   InputAdornment,
   Select,
   OutlinedInput,
-  Chip  
+  Chip,
 } from "@mui/material";
 import StarRate from "@mui/icons-material/StarRate";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -19,7 +19,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
-import Spinner from '../spinner';
+import Spinner from "../spinner";
 
 const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
   props,
@@ -100,12 +100,12 @@ const FantasyMovieForm = ({ genre, handleChange, handleDateChange }) => {
   return (
     <Box
       component="form"
-      direction="Column"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
       }}
     >
-      <FormControl>
+      <FormControl
+      >
         <TextField
           label="title"
           type="text"
@@ -195,7 +195,7 @@ const FantasyMovieForm = ({ genre, handleChange, handleDateChange }) => {
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
           renderValue={(selected) => (
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
               {selected.map((value) => (
                 <Chip key={value} label={value} />
               ))}
@@ -204,10 +204,10 @@ const FantasyMovieForm = ({ genre, handleChange, handleDateChange }) => {
           MenuProps={MenuProps}
         >
           {genres.map((genre) => (
-              <MenuItem key={genre.id} value={genre.name}>
-                {genre.name}
-              </MenuItem>
-            ))}
+            <MenuItem key={genre.id} value={genre.name}>
+              {genre.name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>

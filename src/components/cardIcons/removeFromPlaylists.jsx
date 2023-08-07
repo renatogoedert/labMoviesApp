@@ -9,11 +9,6 @@ const RemoveFromPlaylistsIcon = ({ movie, name }) => {
 
   const handleClick = async (e) => {
     deleteMoviePlaylist(movie.id, name);
-
-    // await supabase
-    // .from("favouriteMovies")
-    // .delete()
-    // .eq("id", id);
   };
 
   return (

@@ -31,9 +31,11 @@ const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
     ["actors", { currentPage: currentPage }],
     getActors
   );
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
+  
   if (isLoading) {
     return <Spinner />;
   }

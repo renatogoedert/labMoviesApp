@@ -115,8 +115,8 @@ const FantasyMovie = () => {
                 anchorEl={anchorEl}
                 onClose={handleClose}
                 anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
+                  vertical: "bottom",
+                  horizontal: "left",
                 }}
               >
                 <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import IconButton from "@mui/material/IconButton";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import QueuePlayNextIcon from '@mui/icons-material/QueuePlayNext';
 import {
   Typography,
   Menu,
@@ -41,7 +41,7 @@ const AddToPlaylistIcon = ({ movie }) => {
   return (
     <>
       <IconButton aria-label="add to playlist" onClick={handleClick}>
-        <PlaylistAddIcon color="primary" fontSize="large" />
+        <QueuePlayNextIcon color="primary" fontSize="large" />
       </IconButton>
       <Menu
         label="menu"
