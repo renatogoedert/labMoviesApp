@@ -104,8 +104,7 @@ const FantasyMovieForm = ({ genre, handleChange, handleDateChange }) => {
         "& .MuiTextField-root": { m: 1, width: "25ch" },
       }}
     >
-      <FormControl
-      >
+      <FormControl>
         <TextField
           label="title"
           type="text"

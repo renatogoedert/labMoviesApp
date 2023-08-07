@@ -67,7 +67,7 @@ export default function ActorCard({ actor, action, token }) {
         <CardHeader
           sx={styles.header}
           avatar={
-            actor.favourite ? (
+            token && actor.favourite ? (
               <Avatar sx={styles.avatar}>
                 <FavoriteIcon />
               </Avatar>

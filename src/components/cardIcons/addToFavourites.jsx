@@ -1,21 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
-import IconButton from "@mui/material/IconButton";
+import LoadingButton from "@mui/lab/LoadingButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { supabase } from "../../api/supabase";
 
 const AddToFavouritesIcon = ({ movie }) => {
   const context = useContext(MoviesContext);
+  const [loading, setLoading] = useState(false);
 
-  const onUserSelect = (e) => {
+  const onUserSelect = async (e) => {
     e.preventDefault();
-    context.addToFavourites(movie);
+    setLoading(true);
+    await context.addToFavourites(movie);
+    setLoading(false);
   };
 
+  // if(!context.addToFavourites(movie)){console.log("hh")};
+
   return (
-    <IconButton aria-label="add to favorites" onClick={onUserSelect}>
-      <FavoriteIcon color="primary" fontSize="large" />
-    </IconButton>
+    <LoadingButton
+      loading={loading}
+      aria-label="add to favorites"
+      onClick={onUserSelect}
+    >
+      <FavoriteIcon fontSize="large" />
+    </LoadingButton>
   );
 };
 

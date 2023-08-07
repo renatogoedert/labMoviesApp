@@ -14,8 +14,8 @@ import {
   Button,
   MenuItem,
   Typography,
-  Select,
-  OutlinedInput,
+  Snackbar,
+  Alert,
   Chip,
 } from "@mui/material";
 
@@ -27,13 +27,16 @@ const styles = {
     flexWrap: "wrap",
     padding: 1.5,
   },
-  item1: { m: 1},
+  item1: { m: 1 },
   item2: { m: 1 },
 };
 
 const playlistsPage = (props) => {
   const [name, setName] = useState("test");
-  const { playlists, addToPlaylists, getPlaylistsNames } = useContext(MoviesContext);
+  const [open, setOpen] = useState(false);
+  const [openError, setOpenError] = useState(false);
+  const { playlists, addToPlaylists, getPlaylistsNames } =
+    useContext(MoviesContext);
   const [formData, setFormData] = useState({
     name: "Playlist Name",
     theme: "coral",
@@ -44,7 +47,7 @@ const playlistsPage = (props) => {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  let names = playlists.filter((p) => (p.moviesId)).map((p) => p.name);
+  let names = playlists.filter((p) => p.moviesId).map((p) => p.name);
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -74,8 +77,17 @@ const playlistsPage = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    addToPlaylists(formData);
-    names = await getPlaylistsNames()
+    const result =await addToPlaylists(formData);
+    names = await getPlaylistsNames();
+    result?setOpen(true):setOpenError(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenError(false)
+    setOpen(false);
   };
 
   // const theme = "blue"
@@ -119,7 +131,12 @@ const playlistsPage = (props) => {
             value={formData.year}
             onChange={handleFormChange}
           ></TextField>
-          <Button sx={styles.item2} variant="contained" color="primary" type="submit">
+          <Button
+            sx={styles.item2}
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
             Submit
           </Button>
         </form>
@@ -138,6 +155,16 @@ const playlistsPage = (props) => {
           );
         }}
       />
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          Playlist Created! Add a movie to display it!
+        </Alert>
+      </Snackbar>
+      <Snackbar open={openError} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          Playlist Already exist! Add a movie to display it!
+        </Alert>
+      </Snackbar>
     </>
   );
 };
