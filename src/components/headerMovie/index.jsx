@@ -24,8 +24,8 @@ const styles = {
 
 const MovieHeader = (props) => {
   const movie = props.movie;
-  const favourites = JSON.parse(localStorage.getItem("favourites"));
-  const isFavourite = favourites.map((m) => m.id  ).includes(movie.id);
+  // const favourites = JSON.parse(localStorage.getItem("favourites"));
+  // const isFavourite = favourites.map((m) => m.id  ).includes(movie.id);
 
   return (
     <Paper component="div" sx={styles.root}>
@@ -33,12 +33,12 @@ const MovieHeader = (props) => {
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
-      {isFavourite  ?
+      {/* {isFavourite  ?
         (<Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
         ) : ( null)
-      }
+      } */}
         
       <Typography variant="h5" component="p">
         {movie.title}{" "}

@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import MovieHeader from "../components/headerMovie";
 import SampleMovie from "./sampleData";
 import { MemoryRouter } from "react-router";
-import { action } from "@storybook/addon-actions";
-
-const [page, setPage] =  useState();
 
 export default {
 
@@ -15,6 +12,6 @@ export default {
   ],
 };
 
-export const Basic = () => <MovieHeader movie={SampleMovie} currentPage={1} setCurrentPage={setPage}/>;
+export const Basic = () => <MovieHeader movie={SampleMovie}/>;
 
 Basic.storyName = "Default";
