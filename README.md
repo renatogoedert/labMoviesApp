@@ -7,9 +7,26 @@ __Name:__ [Renato Francisco Goedert]
 
 [A bullet-point list of the features developed for the React SPA app (only new/modified ones for the Movies app),]
 
-+ Feature X.
-+ Feature Y. 
-+ etc.
++ List view Top rated movies.
++ List view Actor. 
++ Detail view Actor Bio
++ New  parameterized URL(Actor details/Review)
++ Extensive Data hyperlinking with actors and movie details
++ An additional data entity type Actor and Playlist
++ Server state Caching
++ Rating filtering and/or sorting criteria
++ Pagination - for actor and movies listing pages
++ Private and Public routes
++ Premium functionality(favourites and playlists)
++ Favourite Actors
++ Multi-criteria Search(year,rating,number of vote, sortBy and isAdult
++ Storybook support
++ Ordered Favourites with drag and drop
++ Create themed movie playlists
++ My fantasy movie (Advanced)
++ 3rd party authentication - Supabase
++ Backend persistence using Supabase Favourites, playlists
++ Deployment 
 
 ## Feature Design.
 
