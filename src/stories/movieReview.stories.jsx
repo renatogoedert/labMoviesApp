@@ -11,9 +11,14 @@ export default {
   ],
 };
 
-export const Basic = () => <MovieReview review={{author
-    : 
-    "MovieGuys",
-    content: "Hidden Strike is a functional East meets West, military action thriller. There's reasonable chemistry between Jackie Chan and John Cena"}}/>;
+export const Basic = () => (
+  <MovieReview
+    review={{
+      author: "MovieGuys",
+      content:
+        "Hidden Strike is a functional East meets West, military action thriller. There's reasonable chemistry between Jackie Chan and John Cena",
+    }}
+  />
+);
 
 Basic.storyName = "Default";
