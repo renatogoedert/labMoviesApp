@@ -45,6 +45,27 @@ e.g.
 
 ## Authentication. (if relevant)
 
+Supabase Auth
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/411b875e-2ae0-49c6-b593-536b6d0f23ff)
+
+Web app Login 
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/c097e22b-109b-4c25-a673-dda669267874)
+
+Login Form
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/b381ace0-6706-47d8-8270-059bc40ebda5)
+
+Sign Up form
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/fefda56b-da11-4aed-8c8e-a6ea03d60872)
+
+Logout
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/604040cd-5e95-4bda-8eb9-fa4cdc6fb9bf)
+
+
 #### Protected routes 
 
 + / - List of 20  movies from the Discover endpoint,
@@ -64,11 +85,19 @@ e.g.
 
 #### Protected functionality. (if relevant)
 
-[ Briefly state any app functionality that requires authentication, e.g. only authenticated users can tag a movie as a 'favourite'.]
+Only authenticated users can tag a movie as a 'favourite, create playlists, route to playlists, fav actors, fav movies and see favorites avatar in lists
 
 #### Supabase (if relevant)
 
-[Include a screenshot(s) from your Supabase account that verifies its use for this app. ]
+Supabase Database for Fav Actors, Fav Movies and Playlists
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/405d57ac-4ce2-4633-87f6-5bf7156e7672)
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/530cf3e3-97e4-4d35-b0f9-49f01b956704)
+
+Supabase Auth
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/411b875e-2ae0-49c6-b593-536b6d0f23ff)
+
 
 ## Deployment (if relevant).
 
@@ -79,7 +108,10 @@ Username: test1 ; Password: pass1
 
 ## Persistence (if relevant).
 
-[If you are persisting data to the Supabase backend (e.g. favourite movies, fantasy movie), include screenshots with appropriate captions to verify this aspect. ]
+Supabase Database for Fav Actors, Fav Movies and Playlists
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/405d57ac-4ce2-4633-87f6-5bf7156e7672)
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/530cf3e3-97e4-4d35-b0f9-49f01b956704)
 
 ## Additional Information.
 
