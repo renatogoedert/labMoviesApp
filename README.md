@@ -70,25 +70,44 @@ __Name:__ [Renato Francisco Goedert]
 https://github.com/renatogoedert/labMoviesApp/assets/25923678/17bf177f-805f-40b6-ba30-39bca7d9a06b
 
 #### An additional data entity type Actor and Playlist
-  > Lists movies from the Upcoming movies endpoint of TMDB.
+  > Need data entity
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/e2d21d63-7978-4b42-9c47-7b7f25fb3790)
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/8f2a7d25-38e5-4827-b964-d044cc9bce70)
   
 #### Server state Caching
-  > Lists movies from the Upcoming movies endpoint of TMDB.
-  
+  > Cach mem for lists and details
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/da572d72-6987-402c-854c-acd8877e5e47)
+
 #### Rating filtering and/or sorting criteria
-  > Lists movies from the Upcoming movies endpoint of TMDB.
+>filtiring by rating above a chosen number
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/e23ce734-8638-4bb1-8306-696fc8571fea)
+
   
 #### Pagination - for actor and movies listing pages
+
 #### Private and Public routes
+
 #### Premium functionality(favourites and playlists)
+
 #### Favourite Actors
+
 #### Multi-criteria Search(year,rating,number of vote, sortBy and isAdult
+
 #### Storybook support
+
 #### Ordered Favourites with drag and drop
+
 #### Create themed movie playlists
+
 #### My fantasy movie (Advanced)
+
 #### 3rd party authentication - Supabase
+
 #### Backend persistence using Supabase Favourites, playlists
+
 #### Deployment 
 
 ## Storybook.
