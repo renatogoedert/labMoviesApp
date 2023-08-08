@@ -65,8 +65,10 @@ __Name:__ [Renato Francisco Goedert]
 ![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/ac4f1a04-f45e-4644-923c-be3df3ea3ef5)
   
 #### Extensive Data hyperlinking with actors and movie details
-  > Lists movies from the Upcoming movies endpoint of TMDB.
+  > Able to link to actor and movie details trought avatars
   
+https://github.com/renatogoedert/labMoviesApp/assets/25923678/17bf177f-805f-40b6-ba30-39bca7d9a06b
+
 #### An additional data entity type Actor and Playlist
   > Lists movies from the Upcoming movies endpoint of TMDB.
   
