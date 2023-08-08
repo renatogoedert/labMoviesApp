@@ -37,11 +37,24 @@ e.g.
 
 ## Storybook.
 
-[Include a screenshot(s) from the Storybook UI and highlight the stories for new components developed.]
+[Storybook suport for all new itens]
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/f1648aa3-76a7-411a-9320-af5cbbfc76f6)
 
-e.g.
+Actor new details 
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/f9cbfc48-0f54-4a86-a821-9c138adcdbd4)
 
-![][image5]
+Fantasy movie form and cast
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/31e1fff7-b865-4680-a79b-40a6ab836f11)
+
+Review form, list and details
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/5783c942-a631-4bcf-916e-41d29f5cd9f9)
+
+New movie list Header
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/2befc2d4-6c7d-4271-ac37-2b1febaa7a94)
+
+HomePage Search Bar
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/37b452e7-e23b-4e30-b9ca-96444cd7c136)
+
 
 ## Authentication. (if relevant)
 
