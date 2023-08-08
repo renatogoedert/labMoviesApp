@@ -5,8 +5,6 @@ __Name:__ [Renato Francisco Goedert]
 
 ## Features.
 
-[A bullet-point list of the features developed for the React SPA app (only new/modified ones for the Movies app),]
-
 + List view Top rated movies.
 + List view Actor. 
 + Detail view Actor Bio
@@ -30,27 +28,42 @@ __Name:__ [Renato Francisco Goedert]
 
 ## Feature Design.
 
-[ For each feature listed above, show a screenshot(s) of its UI layout (use appropriate magnification for accessibility). Include a caption with each image.]
-
-e.g. 
-
 #### Upcoming Movies.
 
 > Lists movies from the Upcoming movies endpoint of TMDB.
 
-![][image1]
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/28e8dac0-6d7c-40fe-92d9-bae3022aaca1)
 
 #### Movies Reviews.
 
 > Lists all the reviews for a particular movie (shows text extract only).
 
-![][image2]
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/1a7abae6-35e2-463a-ba96-5fe411935cb1)
 
 > Click the 'Full Review' link of a review extract to see the review's full text. 
 
-![][image3]
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/6aa3515f-680a-4809-9a0c-8a03808c7c5a)
 
-.... other features .......
++ List view Top rated movies.
++ List view Actor. 
++ Detail view Actor Bio
++ New  parameterized URL(Actor details/Review)
++ Extensive Data hyperlinking with actors and movie details
++ An additional data entity type Actor and Playlist
++ Server state Caching
++ Rating filtering and/or sorting criteria
++ Pagination - for actor and movies listing pages
++ Private and Public routes
++ Premium functionality(favourites and playlists)
++ Favourite Actors
++ Multi-criteria Search(year,rating,number of vote, sortBy and isAdult
++ Storybook support
++ Ordered Favourites with drag and drop
++ Create themed movie playlists
++ My fantasy movie (Advanced)
++ 3rd party authentication - Supabase
++ Backend persistence using Supabase Favourites, playlists
++ Deployment 
 
 ## Storybook.
 
