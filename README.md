@@ -44,26 +44,50 @@ __Name:__ [Renato Francisco Goedert]
 
 ![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/6aa3515f-680a-4809-9a0c-8a03808c7c5a)
 
-+ List view Top rated movies.
-+ List view Actor. 
-+ Detail view Actor Bio
-+ New  parameterized URL(Actor details/Review)
-+ Extensive Data hyperlinking with actors and movie details
-+ An additional data entity type Actor and Playlist
-+ Server state Caching
-+ Rating filtering and/or sorting criteria
-+ Pagination - for actor and movies listing pages
-+ Private and Public routes
-+ Premium functionality(favourites and playlists)
-+ Favourite Actors
-+ Multi-criteria Search(year,rating,number of vote, sortBy and isAdult
-+ Storybook support
-+ Ordered Favourites with drag and drop
-+ Create themed movie playlists
-+ My fantasy movie (Advanced)
-+ 3rd party authentication - Supabase
-+ Backend persistence using Supabase Favourites, playlists
-+ Deployment 
+#### List view Top rated movies.
+  > Lists movies from the Top rated movies endpoint of TMDB.
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/3eb1c304-d79d-4e27-9e3e-7a683084df14)
+
+#### List view Actor
+  > Lists movies from the person endpoint of TMDB.
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/04807c16-b4aa-4564-b563-e966da5a9131)
+
+#### Detail view Actor Bio
+  > View details from a person endpoint of TMDB.
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/d72741c3-97af-4f99-b21d-ef462d8e2187)
+
+#### New  parameterized URL(Actor details/Review)
+  > Set new routes sending params
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/ac4f1a04-f45e-4644-923c-be3df3ea3ef5)
+  
+#### Extensive Data hyperlinking with actors and movie details
+  > Lists movies from the Upcoming movies endpoint of TMDB.
+  
+#### An additional data entity type Actor and Playlist
+  > Lists movies from the Upcoming movies endpoint of TMDB.
+  
+#### Server state Caching
+  > Lists movies from the Upcoming movies endpoint of TMDB.
+  
+#### Rating filtering and/or sorting criteria
+  > Lists movies from the Upcoming movies endpoint of TMDB.
+  
+#### Pagination - for actor and movies listing pages
+#### Private and Public routes
+#### Premium functionality(favourites and playlists)
+#### Favourite Actors
+#### Multi-criteria Search(year,rating,number of vote, sortBy and isAdult
+#### Storybook support
+#### Ordered Favourites with drag and drop
+#### Create themed movie playlists
+#### My fantasy movie (Advanced)
+#### 3rd party authentication - Supabase
+#### Backend persistence using Supabase Favourites, playlists
+#### Deployment 
 
 ## Storybook.
 
