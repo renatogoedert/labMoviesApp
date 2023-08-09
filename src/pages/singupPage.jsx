@@ -16,7 +16,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
-const SignUp = () => {
+const Signup = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -146,4 +146,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Signup;
