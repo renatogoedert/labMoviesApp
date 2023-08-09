@@ -150,6 +150,10 @@ HomePage Search Bar
 
 ## Authentication. (if relevant)
 
+Created user:
+bart@simpson.ie
+secret
+
 Supabase Auth
 
 ![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/411b875e-2ae0-49c6-b593-536b6d0f23ff)
@@ -205,11 +209,11 @@ Supabase Auth
 
 
 ## Deployment (if relevant).
+>Url: https://lab-movies-app-sable.vercel.app/
 
-[Specify the URL of your deployed app and include a screenshot(s) from your deployment platform account (e.g. Vercal) that verifies its use for this app. Set up a registered user for your app and specify their credentials.
+Username: test1@test1.ie ; 
 
-Username: test1 ; Password: pass1
-]
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/b6d67e60-9a77-46f4-a161-e994a2c7682d)
 
 ![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/d7473144-18fa-4be8-b187-81d68b5389c2)
 
