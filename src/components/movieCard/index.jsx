@@ -109,7 +109,6 @@ export default function MovieCard({ movie, action, token }) {
           </Grid>
         </CardContent>
         <CardActions disableSpacing>
-        <AddToPlaylistsIcon movie={movie} />
           {token&&<>
           {action(movie)}
           </>}

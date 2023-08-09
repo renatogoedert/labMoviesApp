@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import PageTemplate from '../components/templateMovieListPage';
+import PageTemplate from "../components/templateMovieListPage";
 import { getTopRatedMovies } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
-import AddToPlaylistIcon from '../components/cardIcons/addToPlaylist';
+import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
 
 const TopRatedMovies = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, error, isLoading, isError } = useQuery(
-    ["topRated", {currentPage: currentPage}],
+    ["topRated", { currentPage: currentPage }],
     getTopRatedMovies
   );
 
@@ -33,9 +34,14 @@ const TopRatedMovies = (props) => {
       movies={topRatedMovies}
       isPlaylist={false}
       token={props.token}
-       action={(movie) => {
-         return <AddToPlaylistIcon movie={movie} />
-       }}
+      action={(movie) => {
+        return (
+          <>
+            <AddToPlaylistIcon movie={movie} />
+            <AddToFavouritesIcon movie={movie} />
+          </>
+        );
+      }}
     />
   );
 };
