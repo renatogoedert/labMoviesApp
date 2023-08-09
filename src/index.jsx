@@ -11,7 +11,7 @@ import FantasyMovie from "./pages/fantasyMovie";
 import ActorsPage from "./pages/actorsPage";
 import PlaylistPage from "./pages/playlistsPage";
 import LoginPage from "./pages/loginPage";
-import SignupPage from "./pages/SingupPage";
+import SignupPage from "./pages/singupPage";
 import ActorsDetailsPage from "./pages/actorDetailsPage";
 import FavouriteActorsPage from "./pages/favouriteActorsPage";
 import SiteHeader from "./components/siteHeader";
