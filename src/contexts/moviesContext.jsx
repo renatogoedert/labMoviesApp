@@ -37,7 +37,7 @@ const MoviesContextProvider = (props) => {
     };
     fetch();
   }, []);
-npm 
+  
   const getFavourites = async () => {
     let list = [];
     const { data, error } = await supabase.from("favouriteMovies").select("id");
