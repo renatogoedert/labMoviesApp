@@ -87,28 +87,42 @@ https://github.com/renatogoedert/labMoviesApp/assets/25923678/17bf177f-805f-40b6
 
   
 #### Pagination - for actor and movies listing pages
+>Pagination for movies(Homepage toprated and upcoming) and actor
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/a40559ba-fcbb-4438-afd6-9b6558b8cd55)
 
 #### Private and Public routes
+>filtiring by rating above a chosen number
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/ee94cb29-5d3e-412d-8a78-8d6b7e185418)
 
 #### Premium functionality(favourites and playlists)
+>Add and display favourites and playlists 
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/33ab06b3-0a8c-4240-8589-6a97a0c0cb76)
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/1b14457b-e9e9-4a0c-ae61-0c6f6cd8ca3e)
+
 
 #### Favourite Actors
+>Favourites actors page
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/7de88422-edf8-4095-a30d-81e754876815)
 
 #### Multi-criteria Search(year,rating,number of vote, sortBy and isAdult
+>Favourites actors page
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/e02686db-3ea5-4998-a8db-6b74158b245d)
 
-#### Storybook support
 
 #### Ordered Favourites with drag and drop
+>Favourites actors page and Favourites page with drag drop and sort
+
+https://github.com/renatogoedert/labMoviesApp/assets/25923678/c4aafa28-838e-4a2b-9106-7a90202fb4a2
+
 
 #### Create themed movie playlists
+>Favourites actors page
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/c8b3c8ed-1d0c-49aa-b446-3127d33dfb80)
+
 
 #### My fantasy movie (Advanced)
-
-#### 3rd party authentication - Supabase
-
-#### Backend persistence using Supabase Favourites, playlists
-
-#### Deployment 
+>Favourites actors page
 
 ## Storybook.
 
