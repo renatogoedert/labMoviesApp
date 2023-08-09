@@ -122,7 +122,10 @@ https://github.com/renatogoedert/labMoviesApp/assets/25923678/c4aafa28-838e-4a2b
 
 
 #### My fantasy movie (Advanced)
->Favourites actors page
+>Form to change movie details, add cast to add and remove actors from the movie
+>![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/5b2cf410-3841-499a-80b6-d06d4afd1048)
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/51416ee1-1eee-4810-ba36-fcec3b689b44)
 
 ## Storybook.
 
@@ -207,6 +210,9 @@ Supabase Auth
 
 Username: test1 ; Password: pass1
 ]
+
+![image](https://github.com/renatogoedert/labMoviesApp/assets/25923678/d7473144-18fa-4be8-b187-81d68b5389c2)
+
 
 ## Persistence (if relevant).
 
