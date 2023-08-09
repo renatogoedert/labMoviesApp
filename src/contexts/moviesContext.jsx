@@ -73,9 +73,7 @@ const MoviesContextProvider = (props) => {
   const [favouritesActors, setFavouritesActors] = useState([]);
 
   const addToFavourites = async (movie) => {
-    // let updatedFavourites = [...favourites];
     if (!favourites.includes(movie.id)) {
-      // updatedFavourites.push(movie.id);
       const { data, error } = await supabase
         .from("favouriteMovies")
         .insert([{ id: movie.id }]);
@@ -91,14 +89,6 @@ const MoviesContextProvider = (props) => {
     }
   };
 
-  // const removeFromFavourites = async (id) => {
-  //   setFavourites(favourites.filter((aId) => aId !== id));
-  //     const { error } = await supabase
-  //       .from("favouriteMovies")
-  //       .delete()
-  //       .eq("id", id);
-  //     console.log(error);
-  // };
 
   const addToMustWatch = (movie) => {
     let updatedMustWatch = [...mustWatch];
@@ -113,9 +103,7 @@ const MoviesContextProvider = (props) => {
   };
 
   const addToFavouritesActors = async (actor) => {
-    // let updatedFavourites = [...favouritesActors];
     if (!favouritesActors.includes(actor.id)) {
-      // updatedFavourites.push(actor.id);
       const { data, error } = await supabase
         .from("favouriteActors")
         .insert([{ id: actor.id }]);
@@ -186,13 +174,11 @@ const MoviesContextProvider = (props) => {
       value={{
         favourites,
         addToFavourites,
-        // removeFromFavourites,
         addReview,
         mustWatch,
         addToMustWatch,
         favouritesActors,
         addToFavouritesActors,
-        // removeFromFavouritesActors,
         playlists,
         setPlaylists,
         addToPlaylists,

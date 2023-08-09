@@ -15,10 +15,10 @@ const AddToFavouritesIconActor = ({ actor }) => {
   };
   return (
     <LoadingButton
-    loading={loading}
-    aria-label="add to favorites"
-    onClick={onUserSelect}
-  >
+      loading={loading}
+      aria-label="add to favorites"
+      onClick={onUserSelect}
+    >
       <FavoriteIcon fontSize="large" />
     </LoadingButton>
   );

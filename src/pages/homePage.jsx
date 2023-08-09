@@ -5,7 +5,6 @@ import { getMovies, getActors } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
-// import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 
 const HomePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);

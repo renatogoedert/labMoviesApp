@@ -7,7 +7,6 @@ import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-// import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import FemaleIcon from "@mui/icons-material/Female";
 import MaleIcon from "@mui/icons-material/Male";
 import StarRateIcon from "@mui/icons-material/StarRate";
@@ -16,7 +15,6 @@ import img from "../../images/film-poster-placeholder.png";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
-import { closestCenter, DndContext } from "@dnd-kit/core";
 import {
   arrayMove,
   SortableContext,
@@ -35,7 +33,6 @@ const styles = {
 
 export default function ActorCard({ actor, action, token }) {
   const { favouritesActors, addToFavouritesActors } = useContext(MoviesContext);
-  // const { mustWatch, addToMustWatch } = useContext(MoviesContext);
 
   if (favouritesActors.find((id) => id === actor.id)) {
     actor.favourite = true;
@@ -43,11 +40,6 @@ export default function ActorCard({ actor, action, token }) {
     actor.favourite = false;
   }
 
-  // if (mustWatch.find((id) => id === movie.id)) {
-  //   movie.mustWatch = true;
-  // } else {
-  //   movie.mustWatch = false
-  // }
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: actor.id });
   const style = {

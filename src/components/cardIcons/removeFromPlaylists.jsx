@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { MoviesContext } from "../../contexts/moviesContext";
-import { supabase } from "../../api/supabase";
 
 const RemoveFromPlaylistsIcon = ({ movie, name }) => {
   const { deleteMoviePlaylist } = useContext(MoviesContext);

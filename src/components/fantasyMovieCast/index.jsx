@@ -11,7 +11,7 @@ import {
   Button,
   Paper,
   Pagination,
-  Box
+  Box,
 } from "@mui/material";
 
 const styles = {
@@ -35,7 +35,7 @@ const FantasyMovieCast = ({ movieCredits, setMovieCredits }) => {
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
-  
+
   if (isLoading) {
     return <Spinner />;
   }

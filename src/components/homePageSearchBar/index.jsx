@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-
 import {
   Paper,
   TextField,
-  Box,
   Checkbox,
   FormControlLabel,
-  Select,
   MenuItem,
-  InputLabel,
   Button,
 } from "@mui/material";
 
@@ -25,7 +21,13 @@ const styles = {
   item: { m: 1 },
 };
 
-const HomePageSearchBar = ({ setSortBy, setYear, setIsAdult, setVoteCount, setVoteAverage }) => {
+const HomePageSearchBar = ({
+  setSortBy,
+  setYear,
+  setIsAdult,
+  setVoteCount,
+  setVoteAverage,
+}) => {
   const [formData, setFormData] = useState({
     year: 2023,
     sortBy: "popularity.desc",

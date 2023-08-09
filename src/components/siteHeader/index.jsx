@@ -13,8 +13,6 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Fab from "@mui/material/Fab";
 
-
-
 const styles = {
   title: {
     flexGrow: 1,
@@ -114,23 +112,19 @@ const SiteHeader = ({ token }) => {
                     {opt.label}
                   </MenuItem>
                 ))}
-              {token ? (
-                <Fab
-                  color="error"
-                  variant="extended"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </Fab>
-              ) : (
-                <Fab
-                  variant="extended"
-                  color="info"
-                  onClick={handleLoginCLick}
-                >
-                  Login
-                </Fab>
-              )}
+                {token ? (
+                  <Fab color="error" variant="extended" onClick={handleLogout}>
+                    Logout
+                  </Fab>
+                ) : (
+                  <Fab
+                    variant="extended"
+                    color="info"
+                    onClick={handleLoginCLick}
+                  >
+                    Login
+                  </Fab>
+                )}
               </Menu>
             </>
           ) : (
@@ -145,19 +139,11 @@ const SiteHeader = ({ token }) => {
                 </Button>
               ))}
               {token ? (
-                <Fab
-                  color="error"
-                  variant="extended"
-                  onClick={handleLogout}
-                >
+                <Fab color="error" variant="extended" onClick={handleLogout}>
                   Logout
                 </Fab>
               ) : (
-                <Fab
-                  variant="extended"
-                  color="info"
-                  onClick={handleLoginCLick}
-                >
+                <Fab variant="extended" color="info" onClick={handleLoginCLick}>
                   Login
                 </Fab>
               )}

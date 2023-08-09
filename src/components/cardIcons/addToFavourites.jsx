@@ -14,8 +14,6 @@ const AddToFavouritesIcon = ({ movie }) => {
     setLoading(false);
   };
 
-  // if(!context.addToFavourites(movie)){console.log("hh")};
-
   return (
     <LoadingButton
       loading={loading}

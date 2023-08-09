@@ -12,7 +12,6 @@ import ratings from "./ratingCategories";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
-
 const ReviewForm = ({ movie }) => {
   const defaultValues = {
     author: "",
@@ -47,7 +46,6 @@ const ReviewForm = ({ movie }) => {
     setOpen(true);
   };
 
-
   return (
     <Box component="div" sx={styles.root}>
       <Typography component="h2" variant="h3">
@@ -59,11 +57,7 @@ const ReviewForm = ({ movie }) => {
         open={open}
         onClose={handleSnackClose}
       >
-        <Alert
-          severity="success"
-          variant="filled"
-          onClose={handleSnackClose}
-        >
+        <Alert severity="success" variant="filled" onClose={handleSnackClose}>
           <Typography variant="h4">
             Thank you for submitting a review
           </Typography>

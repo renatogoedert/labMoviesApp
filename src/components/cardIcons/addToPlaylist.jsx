@@ -1,18 +1,8 @@
 import React, { useContext, useState } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import IconButton from "@mui/material/IconButton";
-import QueuePlayNextIcon from '@mui/icons-material/QueuePlayNext';
-import {
-  Typography,
-  Menu,
-  Popover,
-  Checkbox,
-  FormControlLabel,
-  Select,
-  MenuItem,
-  InputLabel,
-  Button,
-} from "@mui/material";
+import QueuePlayNextIcon from "@mui/icons-material/QueuePlayNext";
+import { Menu, MenuItem } from "@mui/material";
 
 const AddToPlaylistIcon = ({ movie }) => {
   const { addMovieToPlaylist, getPlaylistsNames } = useContext(MoviesContext);
@@ -36,7 +26,6 @@ const AddToPlaylistIcon = ({ movie }) => {
     event.preventDefault();
     addMovieToPlaylist(movie.id, names[index]);
     setAnchorEl(null);
-    
   };
   return (
     <>
@@ -58,7 +47,11 @@ const AddToPlaylistIcon = ({ movie }) => {
         // onChange={handleChange}
       >
         {names.map((option, index) => (
-          <MenuItem key={option} value={option} onClick={(event) => handleMenuItemClick(event, index)}>
+          <MenuItem
+            key={option}
+            value={option}
+            onClick={(event) => handleMenuItemClick(event, index)}
+          >
             {option}
           </MenuItem>
         ))}

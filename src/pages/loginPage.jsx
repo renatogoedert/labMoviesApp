@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../api/supabase";
+import LoadingButton from '@mui/lab/LoadingButton';
 import {
   Paper,
   TextField,
   Box,
-  Button,
   Stack,
   Typography,
 } from "@mui/material";
@@ -18,6 +18,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 const Login = ({ setToken }) => {
   let navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -37,7 +38,7 @@ const Login = ({ setToken }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
@@ -51,6 +52,7 @@ const Login = ({ setToken }) => {
     } catch (error) {
       alert(error);
     }
+    setLoading(false);
   }
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -69,7 +71,7 @@ const Login = ({ setToken }) => {
       }}
     >
       <Paper elevation={3}>
-        <form onSubmit={handleSubmit}>
+        <form>
           <Stack
             direction="column"
             spacing={2}
@@ -112,9 +114,14 @@ const Login = ({ setToken }) => {
               }}
             />
 
-            <Button variant="outlined" type="submit">
+            <LoadingButton
+              loading={loading}
+              aria-label="Login"
+              variant="contained"
+              onClick={handleSubmit}
+            >
               Submit
-            </Button>
+            </LoadingButton>
           </Stack>
         </form>
         <Typography

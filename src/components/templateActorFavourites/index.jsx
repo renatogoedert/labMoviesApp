@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import Header from "../headerMovieList";
-//import FilterCard from "../filterMoviesCard";
 import Grid from "@mui/material/Grid";
-import Fab from "@mui/material/Fab";
-import Drawer from "@mui/material/Drawer";
 import ActorList from "../actorList";
 import { closestCenter, DndContext } from "@dnd-kit/core";
 import {
@@ -26,31 +22,7 @@ const styles = {
   },
 };
 
-function ActorFavouritesPageTemplate({
-  actors,
-  token,
-  action,
-  setCurrentPage,
-  currentPage,
-}) {
-  // const [titleFilter, setTitleFilter] = useState("");
-  // const [genreFilter, setGenreFilter] = useState("0");
-  // const [drawerOpen, setDrawerOpen] = useState(false);
-
-  // const genreId = Number(genreFilter);
-
-  // let displayedMovies = movies
-  //   .filter((m) => {
-  //     return m.title.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
-  //   })
-  //   .filter((m) => {
-  //     return genreId > 0 ? m.genre_ids.includes(genreId) : true;
-  //   });
-
-  // const handleChange = (type, value) => {
-  //   if (type === "title") setTitleFilter(value);
-  //   else setGenreFilter(value);
-  // };
+function ActorFavouritesPageTemplate({ actors, token, action }) {
   const [favActors, setFavActors] = useState(actors);
   const [inputValue, setInputValue] = useState("");
 
@@ -70,11 +42,6 @@ function ActorFavouritesPageTemplate({
   return (
     <>
       <Grid container sx={styles.root}>
-        {/* <Header
-          title={name}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        /> */}
         <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
           <SortableContext
             items={favActors}
@@ -86,26 +53,6 @@ function ActorFavouritesPageTemplate({
           </SortableContext>
         </DndContext>
       </Grid>
-
-      {/* <Fab
-        color="secondary"
-        variant="extended"
-        onClick={() => setDrawerOpen(true)}
-        sx={styles.fab}
-      >
-        Filter
-      </Fab>
-      <Drawer
-        anchor="left"
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-      >
-        <FilterCard
-          onUserInput={handleChange}
-          titleFilter={titleFilter}
-          genreFilter={genreFilter}
-        />
-      </Drawer> */}
     </>
   );
 }

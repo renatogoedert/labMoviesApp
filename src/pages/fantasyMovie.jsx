@@ -6,13 +6,8 @@ import dayjs from "dayjs";
 import FantasyMovieCast from "../components/fantasyMovieCast";
 import {
   Stack,
-  Popper,
   Popover,
-  Typography,
-  FormGroup,
   Button,
-  Paper,
-  Pagination,
 } from "@mui/material";
 
 const FantasyMovie = () => {

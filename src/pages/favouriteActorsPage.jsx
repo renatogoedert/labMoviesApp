@@ -4,13 +4,12 @@ import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getActor } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
-// import RemoveFromFavouritesIconActor from "../components/cardIcons/removeFromFavouritesActor";
-// import WriteReview from "../components/cardIcons/writeReview";
+
 
 const FavouriteActorsPage = (props) => {
   const { favouritesActors: actorIds } = useContext(MoviesContext);
 
-  // Create an array of queries and run them in parallel.
+
   const favouriteActorQueries = useQueries(
     actorIds.map((actorId) => {
       return {
@@ -20,7 +19,6 @@ const FavouriteActorsPage = (props) => {
     })
   );
   
-  // Check if any of the parallel queries is still loading.
   const isLoading = favouriteActorQueries.find((a) => a.isLoading === true);
 
   if (isLoading) {
@@ -36,10 +34,7 @@ const FavouriteActorsPage = (props) => {
     token={props.token}
     action={(actor) => {
       return (
-        <>
-          {/* <RemoveFromFavouritesIconActor actor={actor} /> */}
-          {/* <WriteReview actor={actor} /> */}
-        </>
+        <></>
       );
     }}
   />

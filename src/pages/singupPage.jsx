@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../api/supabase";
+import LoadingButton from '@mui/lab/LoadingButton';
 import {
   Paper,
   TextField,
   Box,
-  Button,
   Stack,
   Typography,
 } from "@mui/material";
@@ -14,7 +14,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +23,7 @@ const Signup = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = React.useState(false);
+  const [loading, setLoading] = useState(false);
 
   console.log(formData);
 
@@ -37,7 +38,7 @@ const Signup = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
@@ -53,6 +54,7 @@ const Signup = () => {
     } catch (error) {
       alert(error);
     }
+    setLoading(false);
   }
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -71,7 +73,7 @@ const Signup = () => {
       }}
     >
       <Paper elevation={3}>
-        <form onSubmit={handleSubmit}>
+        <form>
           <Stack
             direction="column"
             spacing={2}
@@ -81,13 +83,13 @@ const Signup = () => {
             }}
           >
             <TextField
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle color="primary" fontSize="large" />
-                </InputAdornment>
-              ),
-            }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle color="primary" fontSize="large" />
+                  </InputAdornment>
+                ),
+              }}
               placeholder="Fullname"
               name="fullName"
               onChange={handleChange}
@@ -126,9 +128,14 @@ const Signup = () => {
               }}
             />
 
-            <Button variant="outlined" type="submit">
+            <LoadingButton
+              loading={loading}
+              aria-label="Sign Up"
+              variant="contained"
+              onClick={handleSubmit}
+            >
               Submit
-            </Button>
+            </LoadingButton>
           </Stack>
         </form>
         <Typography

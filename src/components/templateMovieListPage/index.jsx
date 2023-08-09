@@ -7,7 +7,6 @@ import Drawer from "@mui/material/Drawer";
 import MovieList from "../movieList";
 import { TroubleshootSharp } from "@mui/icons-material";
 
-
 const styles = {
   fab: {
     marginTop: 8,
@@ -54,7 +53,7 @@ function MovieListPageTemplate({
 
   return (
     <>
-      <Grid container sx={{padding: "20px", backgroundColor: theme}}>
+      <Grid container sx={{ padding: "20px", backgroundColor: theme }}>
         <Grid item xs={12}>
           {isPlaylist ? null : (
             <Header
